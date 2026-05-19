@@ -1,10 +1,16 @@
 "use client";
 
-import { useState, useCallback, type FormEvent } from "react";
+import { useState, useCallback, type FormEvent, type KeyboardEvent, type ClipboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart, clearCart } from "@/lib/cart-store";
 import { sendOrderToTelegram, type OrderData } from "@/lib/telegram-bot";
 import { CONTACT } from "@/lib/georgian-menu";
+import {
+  formatRuPhoneDisplay,
+  formatRuPhonePretty,
+  isValidRuPhone,
+  normalizeRuPhoneDigits,
+} from "@/lib/phone-ru";
 import { LegalConsentFields } from "@/components/legal-consent-fields";
 import { PhoneIcon, CloseIcon } from "@/components/ui/icons";
 
@@ -15,7 +21,8 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
   const [stage, setStage] = useState<Stage>("form");
   const [errorMsg, setErrorMsg] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneDigits, setPhoneDigits] = useState("");
+  const [phoneTouched, setPhoneTouched] = useState(false);
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
   const [acceptOffer, setAcceptOffer] = useState(false);
@@ -25,7 +32,8 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
     setStage("form");
     setErrorMsg("");
     setName("");
-    setPhone("");
+    setPhoneDigits("");
+    setPhoneTouched(false);
     setAddress("");
     setComment("");
     setAcceptOffer(false);
@@ -37,15 +45,38 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
     onClose();
   }, [stage, reset, onClose]);
 
+  const phoneDisplay = formatRuPhoneDisplay(phoneDigits);
+  const phoneValid = isValidRuPhone(phoneDigits);
+  const showPhoneError = phoneTouched && !phoneValid;
+
+  const handlePhoneChange = useCallback((value: string) => {
+    setPhoneDigits(normalizeRuPhoneDigits(value));
+  }, []);
+
+  const handlePhoneKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Backspace" && e.key !== "Delete") return;
+    if (normalizeRuPhoneDigits(phoneDigits).length <= 1) e.preventDefault();
+  }, [phoneDigits]);
+
+  const handlePhonePaste = useCallback((e: ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    handlePhoneChange(e.clipboardData.getData("text"));
+  }, [handlePhoneChange]);
+
   const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !address.trim() || items.length === 0) return;
+    setPhoneTouched(true);
+    if (!name.trim() || !phoneValid || !address.trim() || items.length === 0) return;
     if (!acceptOffer || !acceptPrivacy) return;
 
     setStage("sending");
     const order: OrderData = {
-      name: name.trim(), phone: phone.trim(), address: address.trim(),
-      comment: comment.trim() || undefined, items, total,
+      name: name.trim(),
+      phone: formatRuPhonePretty(phoneDigits),
+      address: address.trim(),
+      comment: comment.trim() || undefined,
+      items,
+      total,
     };
 
     const result = await sendOrderToTelegram(order);
@@ -56,7 +87,7 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
       setErrorMsg(result.error ?? "Неизвестная ошибка");
       setStage("error");
     }
-  }, [name, phone, address, comment, items, total, acceptOffer, acceptPrivacy]);
+  }, [name, phoneDigits, phoneValid, address, comment, items, total, acceptOffer, acceptPrivacy]);
 
   return (
     <AnimatePresence>
@@ -112,8 +143,30 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
                     </div>
                     <div className="order-field-group">
                       <label className="order-label" htmlFor="order-phone">Телефон *</label>
-                      <input id="order-phone" type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+7 (___) ___-__-__" className="order-input" autoComplete="tel" />
+                      <input
+                        id="order-phone"
+                        type="tel"
+                        required
+                        value={phoneDisplay}
+                        onChange={(e) => handlePhoneChange(e.target.value)}
+                        onKeyDown={handlePhoneKeyDown}
+                        onPaste={handlePhonePaste}
+                        onBlur={() => setPhoneTouched(true)}
+                        placeholder="+7 (900) 123-45-67"
+                        className={`order-input${showPhoneError ? " order-input--invalid" : ""}`}
+                        autoComplete="tel-national"
+                        inputMode="numeric"
+                        aria-invalid={showPhoneError}
+                        aria-describedby="order-phone-hint"
+                      />
+                      <p
+                        id="order-phone-hint"
+                        className={`order-field-hint${showPhoneError ? " order-field-hint--error" : ""}`}
+                      >
+                        {showPhoneError
+                          ? "Введите полный номер: +7 и 10 цифр (например, +7 (909) 577-75-80)"
+                          : "Только российский номер, начинается с +7"}
+                      </p>
                     </div>
                     <div className="order-field-group">
                       <label className="order-label" htmlFor="order-address">Адрес доставки *</label>
@@ -137,7 +190,7 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
                   />
 
                   <button type="submit"
-                    disabled={!name.trim() || !phone.trim() || !address.trim() || !acceptOffer || !acceptPrivacy}
+                    disabled={!name.trim() || !phoneValid || !address.trim() || !acceptOffer || !acceptPrivacy}
                     className="btn-primary w-full justify-center py-4 mt-2 disabled:opacity-40 disabled:pointer-events-none">
                     Отправить заказ · {total.toLocaleString("ru-RU")} ₽
                   </button>

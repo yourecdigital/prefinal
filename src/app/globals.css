@@ -1719,6 +1719,25 @@
   box-shadow: 0 0 0 3px rgba(164, 86, 50, 0.1);
 }
 
+.order-input--invalid {
+  border-color: rgba(220, 80, 70, 0.55);
+}
+
+.order-input--invalid:focus {
+  border-color: rgba(220, 80, 70, 0.7);
+  box-shadow: 0 0 0 3px rgba(220, 80, 70, 0.12);
+}
+
+.order-field-hint {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: rgba(244, 235, 231, 0.35);
+}
+
+.order-field-hint--error {
+  color: rgba(240, 120, 110, 0.9);
+}
+
 .order-textarea {
   resize: vertical;
   min-height: 72px;
