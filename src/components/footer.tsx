@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { CONTACT, MENU, SITE } from "@/lib/georgian-menu";
+import { CONTACT, MENU, MENU_HREF, SITE } from "@/lib/georgian-menu";
 import { LEGAL } from "@/lib/legal";
 import { VkIcon } from "@/components/ui/icons";
 
 const LINKS = [
-  { label: "Меню", href: "/menu" },
+  { label: "Меню", href: MENU_HREF },
   { label: "О нас", href: "/about" },
   { label: "Доставка", href: "/delivery" },
   { label: "Контакты", href: "/contacts" },
@@ -38,7 +38,7 @@ export function Footer() {
             <h3 className="label-caps text-cream font-bold">Категории</h3>
             <nav className="flex flex-col gap-3" aria-label="Категории меню">
               {MENU.slice(0, 5).map((cat) => (
-                <Link key={cat.id} href="/menu" className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</Link>
+                <Link key={cat.id} href={MENU_HREF} className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</Link>
               ))}
             </nav>
           </div>

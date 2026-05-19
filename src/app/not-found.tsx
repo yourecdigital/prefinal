@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MENU_HREF } from "@/lib/georgian-menu";
 
 export const metadata: Metadata = {
   title: "404 — Страница не найдена",
@@ -27,7 +28,7 @@ export default function NotFound() {
         <Link href="/" className="btn-primary px-10 py-4">
           На главную
         </Link>
-        <Link href="/menu" className="btn-outline px-10 py-4">
+        <Link href={MENU_HREF} className="btn-outline px-10 py-4">
           Открыть меню
         </Link>
       </div>

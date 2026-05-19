@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/hero-section";
 import { PromoBanner } from "@/components/promo-banner";
 import { FeaturesSection } from "@/components/features-section";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
+import { MENU_HREF } from "@/lib/georgian-menu";
 
 export function HomeSections() {
   return (
@@ -27,7 +28,7 @@ export function HomeSections() {
             <p className="text-ink/45 mb-8 text-desc max-w-sm leading-relaxed">
               50+ блюд в 10 категориях. Отберите свои фавориты или доверьтесь рекомендациям. Доставим горячим.
             </p>
-            <Link href="/menu" className="btn-primary px-10 py-4">Перейти в меню</Link>
+            <Link href={MENU_HREF} className="btn-primary px-10 py-4">Перейти в меню</Link>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }} viewport={{ once: true }} className="home-split__aside">

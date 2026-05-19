@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useCallback, type ReactNode } from "react";
-import { CartButton } from "./cart-button";
 import { CartDrawer } from "./cart-drawer";
 import { OrderForm } from "./order-form";
+import { SiteFabs } from "./site-fabs";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -21,7 +21,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
-      <CartButton onClick={toggleDrawer} />
+      <SiteFabs onCartClick={toggleDrawer} />
       <CartDrawer open={drawerOpen} onClose={closeDrawer} onOrder={openOrder} />
       <OrderForm open={orderOpen} onClose={closeOrder} />
     </>

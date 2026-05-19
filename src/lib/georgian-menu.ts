@@ -193,3 +193,7 @@ export const SITE = {
     lng: 29.9065,
   },
 } as const;
+
+/** Якорь на блок «Попробуй Грузию на вкус» */
+export const MENU_SECTION_ID = "menu";
+export const MENU_HREF = `/menu#${MENU_SECTION_ID}` as const;

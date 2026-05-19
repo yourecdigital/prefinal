@@ -4,11 +4,17 @@ import { useEffect, useState, useId } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { CONTACT } from "@/lib/georgian-menu";
+import { CONTACT, MENU_HREF } from "@/lib/georgian-menu";
 import { PhoneIcon, VkIcon, ArrowUpRightIcon } from "@/components/ui/icons";
 
+function navLinkActive(pathname: string, href: string) {
+  const base = href.split("#")[0].replace(/\/$/, "") || "/";
+  const current = pathname.replace(/\/$/, "") || "/";
+  return base === current;
+}
+
 const LINKS = [
-  { label: "Меню", href: "/menu" },
+  { label: "Меню", href: MENU_HREF },
   { label: "О нас", href: "/about" },
   { label: "Доставка", href: "/delivery" },
   { label: "Контакты", href: "/contacts" },
@@ -75,7 +81,7 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 className={`label-caps transition-colors duration-200 tracking-widest ${
-                  pathname === l.href ? "text-gold" : "text-ink/40 hover:text-ink"
+                  navLinkActive(pathname, l.href) ? "text-gold" : "text-ink/40 hover:text-ink"
                 }`}
               >
                 {l.label}
@@ -135,7 +141,7 @@ export function Nav() {
                   <motion.div key={l.href}
                     initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.08 + i * 0.055, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}>
-                    <Link href={l.href} onClick={close} data-active={pathname === l.href} className="mobile-menu-link">
+                    <Link href={l.href} onClick={close} data-active={navLinkActive(pathname, l.href)} className="mobile-menu-link">
                       <span className="mobile-menu-link__index">{String(i + 1).padStart(2, "0")}</span>
                       <span className="mobile-menu-link__label">{l.label}</span>
                       <span className="mobile-menu-link__arrow"><ArrowUpRightIcon /></span>

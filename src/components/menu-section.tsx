@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
-import { MENU, type MenuCategory, type MenuItem, CONTACT } from "@/lib/georgian-menu";
+import { MENU, MENU_SECTION_ID, type MenuCategory, type MenuItem, CONTACT } from "@/lib/georgian-menu";
 import { addToCart } from "@/lib/cart-store";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
 import { MenuDishCard } from "@/components/menu-dish-card";
@@ -116,6 +116,16 @@ export function MenuSection() {
 
   const active = MENU.find((c) => c.id === activeId) ?? MENU[0];
 
+  useEffect(() => {
+    const scrollToMenuSection = () => {
+      if (window.location.hash !== `#${MENU_SECTION_ID}`) return;
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    scrollToMenuSection();
+    window.addEventListener("hashchange", scrollToMenuSection);
+    return () => window.removeEventListener("hashchange", scrollToMenuSection);
+  }, []);
+
   const handleTabClick = (id: string) => {
     setActiveId(id);
     requestAnimationFrame(() => {
@@ -124,7 +134,7 @@ export function MenuSection() {
   };
 
   return (
-    <section id="menu" ref={ref} className="bg-menu relative overflow-visible py-20 sm:py-28 px-6 sm:px-10">
+    <section id={MENU_SECTION_ID} ref={ref} className="bg-menu relative overflow-visible py-20 sm:py-28 px-6 sm:px-10">
       <div className="section-watermark top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-ink pointer-events-none select-none">
         МЕНЮ
       </div>

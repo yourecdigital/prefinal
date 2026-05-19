@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalDocument, LegalList, LegalSection } from "@/components/legal-document";
 import { LEGAL } from "@/lib/legal";
-import { SITE } from "@/lib/georgian-menu";
+import { MENU_HREF, SITE } from "@/lib/georgian-menu";
 
 export const metadata: Metadata = {
   title: "Публичная оферта",
@@ -96,7 +96,7 @@ export default function OfferPage() {
 
       <LegalSection title="5. Цены и оплата">
         <p>
-          5.1. Цены указаны в рублях РФ на странице <Link href="/menu/">«Меню»</Link> и включают все налоги
+          5.1. Цены указаны в рублях РФ на странице <Link href={MENU_HREF}>«Меню»</Link> и включают все налоги
           и сборы, если иное не указано отдельно.
         </p>
         <p>
