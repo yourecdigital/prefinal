@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CONTACT, MENU, MENU_HREF, SITE } from "@/lib/georgian-menu";
+import { MenuLink } from "@/components/menu-link";
 import { LEGAL } from "@/lib/legal";
 import { VkIcon } from "@/components/ui/icons";
 
@@ -29,16 +30,20 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="label-caps text-cream font-bold">Навигация</h3>
             <nav className="flex flex-col gap-3" aria-label="Навигация в подвале">
-              {LINKS.map((link) => (
-                <Link key={link.href} href={link.href} className="text-cream/40 hover:text-cream transition-colors text-sm">{link.label}</Link>
-              ))}
+              {LINKS.map((link) =>
+                link.href === MENU_HREF ? (
+                  <MenuLink key={link.href} className="text-cream/40 hover:text-cream transition-colors text-sm">{link.label}</MenuLink>
+                ) : (
+                  <Link key={link.href} href={link.href} className="text-cream/40 hover:text-cream transition-colors text-sm">{link.label}</Link>
+                ),
+              )}
             </nav>
           </div>
           <div className="flex flex-col gap-4">
             <h3 className="label-caps text-cream font-bold">Категории</h3>
             <nav className="flex flex-col gap-3" aria-label="Категории меню">
               {MENU.slice(0, 5).map((cat) => (
-                <Link key={cat.id} href={MENU_HREF} className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</Link>
+                <MenuLink key={cat.id} className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</MenuLink>
               ))}
             </nav>
           </div>

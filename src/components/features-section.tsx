@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
 import { ArrowDownIcon } from "@/components/ui/icons";
-import { MENU_HREF } from "@/lib/georgian-menu";
+import { MenuLink } from "@/components/menu-link";
 import type { TelegramEmojiId } from "@/lib/telegram-emoji";
 
 const FEATURES: { num: string; icon: TelegramEmojiId; title: string; desc: string }[] = [
@@ -63,9 +63,9 @@ export function FeaturesSection() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="mt-10 sm:mt-12 flex justify-center"
         >
-          <Link href={MENU_HREF} className="btn-primary px-8 py-4">
+          <MenuLink className="btn-primary px-8 py-4">
             Открыть меню <ArrowDownIcon />
-          </Link>
+          </MenuLink>
         </motion.div>
       </div>
     </section>

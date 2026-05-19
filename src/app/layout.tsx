@@ -3,6 +3,7 @@ import { Unbounded, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { MenuHashScroll } from "@/components/menu-hash-scroll";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CartProvider } from "@/components/cart-provider";
@@ -153,6 +154,7 @@ export default function RootLayout({
       <body className="antialiased">
         <RestaurantJsonLd />
         <SmoothScrollProvider>
+          <MenuHashScroll />
           <Nav />
           <CartProvider>
             {children}

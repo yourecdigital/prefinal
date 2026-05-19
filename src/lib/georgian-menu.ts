@@ -196,4 +196,4 @@ export const SITE = {
 
 /** Якорь на блок «Попробуй Грузию на вкус» */
 export const MENU_SECTION_ID = "menu";
-export const MENU_HREF = `/menu#${MENU_SECTION_ID}` as const;
+export const MENU_HREF = `/menu/#${MENU_SECTION_ID}` as const;

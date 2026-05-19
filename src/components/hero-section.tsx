@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { CONTACT, MENU_HREF } from "@/lib/georgian-menu";
+import { CONTACT } from "@/lib/georgian-menu";
+import { MenuLink } from "@/components/menu-link";
 import { CaucasusMountains } from "@/components/ui/caucasus-mountains";
 import { ArrowDownIcon, PhoneIcon } from "@/components/ui/icons";
 
@@ -65,9 +66,9 @@ export function HeroSection() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.65 }}
           className="mt-9 sm:mt-10 flex flex-wrap gap-4">
-          <Link href={MENU_HREF} className="btn-primary px-8 py-4">
+          <MenuLink className="btn-primary px-8 py-4">
             Открыть меню <ArrowDownIcon />
-          </Link>
+          </MenuLink>
           <a href={`tel:${CONTACT.phoneRaw}`} className="btn-outline px-8 py-4">
             <PhoneIcon /> {CONTACT.phone}
           </a>

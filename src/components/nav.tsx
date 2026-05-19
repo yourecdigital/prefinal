@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CONTACT, MENU_HREF } from "@/lib/georgian-menu";
+import { MenuLink } from "@/components/menu-link";
 import { PhoneIcon, VkIcon, ArrowUpRightIcon } from "@/components/ui/icons";
 
 function navLinkActive(pathname: string, href: string) {
@@ -76,17 +77,28 @@ export function Nav() {
           </Link>
 
           <nav className="site-header__desktop" aria-label="Основная навигация">
-            {LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`label-caps transition-colors duration-200 tracking-widest ${
-                  navLinkActive(pathname, l.href) ? "text-gold" : "text-ink/40 hover:text-ink"
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {LINKS.map((l) =>
+              l.href === MENU_HREF ? (
+                <MenuLink
+                  key={l.href}
+                  className={`label-caps transition-colors duration-200 tracking-widest ${
+                    navLinkActive(pathname, l.href) ? "text-gold" : "text-ink/40 hover:text-ink"
+                  }`}
+                >
+                  {l.label}
+                </MenuLink>
+              ) : (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`label-caps transition-colors duration-200 tracking-widest ${
+                    navLinkActive(pathname, l.href) ? "text-gold" : "text-ink/40 hover:text-ink"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="site-header__actions">
@@ -141,11 +153,19 @@ export function Nav() {
                   <motion.div key={l.href}
                     initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.08 + i * 0.055, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}>
-                    <Link href={l.href} onClick={close} data-active={navLinkActive(pathname, l.href)} className="mobile-menu-link">
-                      <span className="mobile-menu-link__index">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="mobile-menu-link__label">{l.label}</span>
-                      <span className="mobile-menu-link__arrow"><ArrowUpRightIcon /></span>
-                    </Link>
+                    {l.href === MENU_HREF ? (
+                      <MenuLink onClick={close} data-active={navLinkActive(pathname, l.href)} className="mobile-menu-link">
+                        <span className="mobile-menu-link__index">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="mobile-menu-link__label">{l.label}</span>
+                        <span className="mobile-menu-link__arrow"><ArrowUpRightIcon /></span>
+                      </MenuLink>
+                    ) : (
+                      <Link href={l.href} onClick={close} data-active={navLinkActive(pathname, l.href)} className="mobile-menu-link">
+                        <span className="mobile-menu-link__index">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="mobile-menu-link__label">{l.label}</span>
+                        <span className="mobile-menu-link__arrow"><ArrowUpRightIcon /></span>
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </nav>

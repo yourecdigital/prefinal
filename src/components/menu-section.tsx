@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
 import { MENU, MENU_SECTION_ID, type MenuCategory, type MenuItem, CONTACT } from "@/lib/georgian-menu";
 import { addToCart } from "@/lib/cart-store";
@@ -115,16 +115,6 @@ export function MenuSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const active = MENU.find((c) => c.id === activeId) ?? MENU[0];
-
-  useEffect(() => {
-    const scrollToMenuSection = () => {
-      if (window.location.hash !== `#${MENU_SECTION_ID}`) return;
-      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-    scrollToMenuSection();
-    window.addEventListener("hashchange", scrollToMenuSection);
-    return () => window.removeEventListener("hashchange", scrollToMenuSection);
-  }, []);
 
   const handleTabClick = (id: string) => {
     setActiveId(id);
