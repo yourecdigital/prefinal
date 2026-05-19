@@ -29,7 +29,7 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
   return (
-    <section ref={ref} className="bg-menu hero-with-header relative min-h-0 sm:min-h-[100svh] flex flex-col overflow-visible sm:overflow-hidden pb-0">
+    <section ref={ref} className="bg-menu hero-with-header relative flex flex-col overflow-visible sm:min-h-[100svh] sm:overflow-hidden sm:pb-0">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute top-[12%] right-[8%] w-[min(320px,55vw)] h-[min(320px,55vw)] rounded-full opacity-25"
           style={{ background: "radial-gradient(circle, rgba(164, 86, 50, 0.35), transparent 68%)" }} />
@@ -91,8 +91,8 @@ export function HeroSection() {
 
       <CaucasusMountains
         scrollRef={ref}
-        className="relative left-1/2 z-[5] w-screen max-w-none -translate-x-1/2 -mt-3 sm:absolute sm:bottom-0 sm:mt-0"
-        heightClassName="h-[22vh] sm:h-[55vh] md:h-[50vh]"
+        className="relative z-[4] w-full max-w-none sm:absolute sm:inset-x-0 sm:bottom-0"
+        heightClassName="h-[var(--mountains-h)] sm:h-[55vh] md:h-[50vh]"
       />
     </section>
   );

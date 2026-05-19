@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CONTACT, MENU, SITE } from "@/lib/georgian-menu";
+import { LEGAL } from "@/lib/legal";
 import { VkIcon } from "@/components/ui/icons";
 
 const LINKS = [
@@ -50,6 +51,17 @@ export function Footer() {
             </div>
           </div>
         </div>
+
+        <nav className="footer-legal" aria-label="Юридическая информация">
+          <Link href={LEGAL.paths.privacy} className="footer-legal__link">
+            Политика конфиденциальности
+          </Link>
+          <span className="footer-legal__sep" aria-hidden />
+          <Link href={LEGAL.paths.offer} className="footer-legal__link">
+            Публичная оферта
+          </Link>
+        </nav>
+
         <div className="border-t border-cream/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-cream/30 text-xs">© {new Date().getFullYear()} Доставка «{SITE.name}» — грузинская кухня в Петергофе, Ломоносове и Стрельне.</p>
           <a href={CONTACT.vk} target="_blank" rel="noopener noreferrer" className="text-cream/30 hover:text-gold transition-colors" aria-label="ВКонтакте">

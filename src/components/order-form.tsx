@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart, clearCart } from "@/lib/cart-store";
 import { sendOrderToTelegram, type OrderData } from "@/lib/telegram-bot";
 import { CONTACT } from "@/lib/georgian-menu";
+import { LegalConsentFields } from "@/components/legal-consent-fields";
 import { PhoneIcon, CloseIcon } from "@/components/ui/icons";
 
 type Stage = "form" | "sending" | "success" | "error";
@@ -17,6 +18,8 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [comment, setComment] = useState("");
+  const [acceptOffer, setAcceptOffer] = useState(false);
+  const [acceptPrivacy, setAcceptPrivacy] = useState(false);
 
   const reset = useCallback(() => {
     setStage("form");
@@ -25,6 +28,8 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
     setPhone("");
     setAddress("");
     setComment("");
+    setAcceptOffer(false);
+    setAcceptPrivacy(false);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -35,6 +40,7 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
   const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim() || !address.trim() || items.length === 0) return;
+    if (!acceptOffer || !acceptPrivacy) return;
 
     setStage("sending");
     const order: OrderData = {
@@ -50,7 +56,7 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
       setErrorMsg(result.error ?? "Неизвестная ошибка");
       setStage("error");
     }
-  }, [name, phone, address, comment, items, total]);
+  }, [name, phone, address, comment, items, total, acceptOffer, acceptPrivacy]);
 
   return (
     <AnimatePresence>
@@ -121,7 +127,17 @@ export function OrderForm({ open, onClose }: { open: boolean; onClose: () => voi
                     </div>
                   </div>
 
-                  <button type="submit" disabled={!name.trim() || !phone.trim() || !address.trim()}
+                  <LegalConsentFields
+                    acceptOffer={acceptOffer}
+                    acceptPrivacy={acceptPrivacy}
+                    onAcceptOfferChange={setAcceptOffer}
+                    onAcceptPrivacyChange={setAcceptPrivacy}
+                    idPrefix="order"
+                    variant="dark"
+                  />
+
+                  <button type="submit"
+                    disabled={!name.trim() || !phone.trim() || !address.trim() || !acceptOffer || !acceptPrivacy}
                     className="btn-primary w-full justify-center py-4 mt-2 disabled:opacity-40 disabled:pointer-events-none">
                     Отправить заказ · {total.toLocaleString("ru-RU")} ₽
                   </button>

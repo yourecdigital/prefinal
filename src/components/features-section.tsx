@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
+import { ArrowDownIcon } from "@/components/ui/icons";
 import type { TelegramEmojiId } from "@/lib/telegram-emoji";
 
 const FEATURES: { num: string; icon: TelegramEmojiId; title: string; desc: string }[] = [
@@ -53,6 +55,17 @@ export function FeaturesSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="mt-10 sm:mt-12 flex justify-center"
+        >
+          <Link href="/menu" className="btn-primary px-8 py-4">
+            Открыть меню <ArrowDownIcon />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

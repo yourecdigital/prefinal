@@ -11,11 +11,14 @@ export function PromoBanner() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="promo" ref={ref} className="bg-menu home-promo relative overflow-hidden pt-8 sm:pt-12 pb-20 sm:pb-28 px-6 sm:px-10">
-      <div className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(ellipse 50% 80% at 50% 50%, rgba(164, 86, 50, 0.2), transparent 70%)" }} />
+    <section id="promo" ref={ref} className="home-promo bg-menu relative overflow-hidden pb-20 sm:pb-28 px-6 sm:px-10">
+      <div className="home-promo__static-bg pointer-events-none absolute inset-0 z-0" aria-hidden>
+        <div className="absolute inset-0 bg-menu" />
+        <div className="absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 50% 80% at 50% 50%, rgba(164, 86, 50, 0.2), transparent 70%)" }} />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto home-split home-split--centered">
+      <div className="home-promo__content relative z-20 max-w-7xl mx-auto home-split home-split--centered">
         <div className="home-split__main flex flex-col items-center lg:items-start text-center lg:text-left">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
