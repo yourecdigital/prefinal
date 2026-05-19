@@ -5,14 +5,15 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CONTACT } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
+import { TypewriterText } from "@/components/ui/typewriter-text";
 import { CaucasusMountains } from "@/components/ui/caucasus-mountains";
 import { ArrowDownIcon, PhoneIcon } from "@/components/ui/icons";
 
 function Word({ children, delay = 0 }: { children: string; delay?: number }) {
   return (
-    <span style={{ overflow: "hidden", display: "inline-block" }}>
+    <span className="hero-word-reveal">
       <motion.span
-        style={{ display: "inline-block" }}
+        className="hero-word-reveal__inner"
         initial={{ y: "105%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -50,9 +51,13 @@ export function HeroSection() {
 
         <h1 className="display-hero text-ink mb-0 flex flex-col gap-0">
           <Word delay={0.2}>вкусно</Word>
-          <span className="text-gold-shimmer display-hero block leading-[0.95]">
-            <Word delay={0.32}>как</Word>{" "}
-            <Word delay={0.42}>в грузии</Word>
+          <span className="hero-title-typewriter block">
+            <TypewriterText
+              text="как в грузии"
+              startDelay={720}
+              charDelay={72}
+              className="text-gold-shimmer"
+            />
           </span>
         </h1>
 
