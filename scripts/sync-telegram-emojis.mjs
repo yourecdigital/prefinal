@@ -24,7 +24,7 @@ const MAP = {
   bun: "Food%20and%20Drink/Pretzel.webp",
   mushroom: "Food%20and%20Nature/Mushroom.webp",
   shashlik: "Food%20and%20Drink/Oden.webp",
-  grenki: "Food%20and%20Drink/Sandwich.webp",
+  grenki: "Food%20and%20Drink/Pancakes.webp",
   clover: "Animals%20and%20Nature/Four%20Leaf%20Clover.webp",
   hot_face: "Smileys%20and%20Emotion/Hot%20Face.webp",
   stew: "Food%20and%20Drink/Steaming%20Bowl.webp",
