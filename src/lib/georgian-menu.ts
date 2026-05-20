@@ -117,7 +117,7 @@ export const MENU: MenuCategory[] = [
   {
     id: "sets",
     title: "Сеты",
-    emoji: "bento",
+    emoji: "shashlik",
     items: [
       {
         name: "Сет «Классик»",
@@ -201,7 +201,7 @@ export const MENU: MenuCategory[] = [
   {
     id: "hot-starters",
     title: "Горячие закуски",
-    emoji: "mushroom",
+    emoji: "grenki",
     items: [
       {
         name: "Гренки",

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { HeroSection } from "@/components/hero-section";
 import { PromoBanner } from "@/components/promo-banner";
 import { FeaturesSection } from "@/components/features-section";
-import { TelegramEmoji } from "@/components/ui/telegram-emoji";
+import { AmbientGrillVideo } from "@/components/ui/ambient-grill-video";
 import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
 
@@ -33,8 +33,8 @@ export function HomeSections() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }} viewport={{ once: true }} className="home-split__aside">
-            <div className="menu-card-light rounded-2xl aspect-square w-full flex items-center justify-center border border-wine/20">
-              <TelegramEmoji name="fork_plate" size={96} className="opacity-90" />
+            <div className="menu-card-light ambient-video-frame rounded-2xl aspect-square w-full overflow-hidden border border-wine/20">
+              <AmbientGrillVideo src="/videos/grill-mangal.mp4" className="ambient-video--square" />
             </div>
           </motion.div>
         </div>

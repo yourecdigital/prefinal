@@ -19,6 +19,7 @@ yarn-error.log*
 *.pem
 .claude/
 tsconfig.tsbuildinfo
+public/videos/*-raw.mp4
 
 # vercel
 .vercel

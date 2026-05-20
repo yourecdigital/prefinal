@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
+import { AmbientGrillVideo } from "@/components/ui/ambient-grill-video";
 
 export function AboutSection() {
   const ref = useRef<HTMLElement>(null);
@@ -44,18 +45,17 @@ export function AboutSection() {
 
         <motion.div initial={{ opacity: 0, x: 30 }} animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}>
-          <div className="relative rounded-2xl overflow-hidden p-px"
+          <div className="relative rounded-2xl overflow-hidden p-px ambient-video-frame ambient-video-frame--about"
             style={{ background: "linear-gradient(135deg, rgba(212,169,58,0.35) 0%, rgba(114,47,55,0.2) 50%, rgba(212,169,58,0.1) 100%)" }}>
-            <div className="rounded-2xl p-10 sm:p-12 flex flex-col items-center text-center gap-7"
-              style={{ background: "rgba(255,255,255,0.6)", backdropFilter: "blur(16px)" }}>
-              <motion.span animate={{ rotate: [0, 8, -8, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                className="text-[5rem] text-gold/30 select-none" style={{ fontFamily: "var(--font-heading)" }}>✦</motion.span>
-              <blockquote className="text-wine italic font-bold"
-                style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.4rem,3vw,2rem)", lineHeight: 1.25 }}>
-                «Попробуй Грузию на вкус!»
-              </blockquote>
-              <p className="text-ink/30 text-sm text-desc">Спасибо, что вы с нами</p>
-              <div className="flex gap-5 text-gold/30 text-xl select-none"><span>❖</span><span>✦</span><span>❖</span></div>
+            <div className="relative rounded-2xl overflow-hidden aspect-square sm:aspect-[4/5] lg:aspect-square min-h-[280px]">
+              <AmbientGrillVideo src="/videos/grill-chef.mp4" className="ambient-video--cover" />
+              <div className="ambient-video-quote pointer-events-none">
+                <blockquote className="text-cream italic font-bold drop-shadow-lg"
+                  style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.2rem,2.8vw,1.75rem)", lineHeight: 1.25 }}>
+                  «Попробуй Грузию на вкус!»
+                </blockquote>
+                <p className="text-cream/70 text-sm text-desc mt-3 drop-shadow">Шашлык на углях — как на природе</p>
+              </div>
             </div>
           </div>
         </motion.div>

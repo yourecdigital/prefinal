@@ -5,6 +5,7 @@
 export const TELEGRAM_EMOJI_IDS = [
   "fire", "herb", "rocket", "heart", "party", "gift",
   "fork_plate", "bento", "flatbread", "bun", "mushroom",
+  "shashlik", "grenki",
   "clover", "hot_face", "stew", "fries", "sauce",
   "stopwatch", "money", "compass", "check", "phone",
   "mobile", "speech", "wine", "meat", "cooking",
