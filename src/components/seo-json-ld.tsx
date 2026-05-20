@@ -60,6 +60,7 @@ export function SeoJsonLd() {
           "@type": "MenuItem",
           name: item.name,
           ...(item.desc ? { description: item.desc } : { description: item.shortDesc }),
+          ...(item.seoLine ? { keywords: item.seoLine } : {}),
           ...(item.image ? { image: `${SITE_URL}${item.image}` } : {}),
           offers: {
             "@type": "Offer",
@@ -75,7 +76,7 @@ export function SeoJsonLd() {
     "@context": "https://schema.org",
     "@type": "FoodDeliveryService",
     name: `${SITE.name} — доставка`,
-    description: "Доставка шашлыков на мангале, люля-кебаба, горячих закусок, грузинских салатов и сетов в Петергоф, Ломоносов и Стрельну",
+    description: "Доставка шашлыков на мангале, хачапури, люля-кебаба, горячих закусок, грузинских салатов и сетов в Петергоф, Ломоносов и Стрельну",
     url: `${SITE_URL}/delivery/`,
     telephone: CONTACT.phone,
     areaServed: SITE.geo.areas.map((area) => ({ "@type": "City", name: area })),

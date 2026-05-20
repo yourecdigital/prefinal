@@ -27,7 +27,7 @@ export function HomeSections() {
               Откроем<br /><span className="text-wine">вам Грузию</span>
             </h2>
             <p className="text-ink/45 mb-8 text-desc max-w-sm leading-relaxed">
-              {MENU_ITEM_COUNT} блюд в {MENU_CATEGORY_COUNT} категориях. Шашлык, люля, горячие закуски, сеты и салаты — доставим горячим с мангала.
+              {MENU_ITEM_COUNT} блюд в {MENU_CATEGORY_COUNT} категориях. Шашлык, хачапури, горячие закуски, сеты и салаты — доставим горячим с мангала.
             </p>
             <MenuLink className="btn-primary px-10 py-4">Перейти в меню</MenuLink>
           </motion.div>

@@ -67,6 +67,9 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
 
         <div className="menu-dish-card__body">
           <p className="menu-dish-card__teaser">{item.shortDesc}</p>
+          {item.highlights?.[0] && (
+            <p className="menu-dish-card__hook">{item.highlights[0]}</p>
+          )}
           <div className="menu-dish-card__footer">
             <div className="menu-dish-card__price">
               <span className="menu-dish-card__price-value">{item.price.toLocaleString("ru-RU")}</span>
@@ -114,7 +117,21 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
                     {item.unit && <span className="label-caps text-ink/35">{item.unit}</span>}
                   </div>
                   <h3 id={`dish-${item.name}`} className="menu-dish-modal__title">{item.name}</h3>
-                  <p className="menu-dish-modal__desc">{item.desc ?? item.shortDesc}</p>
+                  <div className="menu-dish-modal__copy">
+                    {(item.desc ?? item.shortDesc).split(/\n\n+/).map((paragraph) => (
+                      <p key={paragraph.slice(0, 24)} className="menu-dish-modal__desc">{paragraph}</p>
+                    ))}
+                    {item.highlights && item.highlights.length > 0 && (
+                      <ul className="menu-dish-modal__highlights">
+                        {item.highlights.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {item.seoLine && (
+                      <p className="menu-dish-modal__seo">{item.seoLine}</p>
+                    )}
+                  </div>
                   <div className="menu-dish-modal__bar">
                     <div className="menu-dish-card__price">
                       <span className="menu-dish-card__price-value text-[clamp(1.75rem,4vw,2.25rem)]">{item.price.toLocaleString("ru-RU")}</span>

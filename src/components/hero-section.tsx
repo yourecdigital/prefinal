@@ -64,7 +64,7 @@ export function HeroSection() {
         <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.7 }}
           className="mt-7 sm:mt-9 text-ink/50 max-w-lg text-desc">
-          Шашлыки на мангале, люля-кебаб, гренки, сулугуни и грузинские салаты — готовим на углях
+          Шашлыки на мангале, хачапури, люля-кебаб, гренки и грузинские салаты — готовим на углях
           и доставляем горячим в{" "}Петергоф, Ломоносов и Стрельну.
         </motion.p>
 

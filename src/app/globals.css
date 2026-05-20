@@ -498,11 +498,19 @@
   line-height: 1.65;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: rgba(237, 230, 226, 0.48);
+  color: rgba(237, 230, 226, 0.52);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.menu-dish-card__hook {
+  font-family: var(--font-mono), "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(212, 168, 83, 0.72);
 }
 .menu-dish-card__footer {
   display: flex;
@@ -668,7 +676,36 @@
   letter-spacing: 0.02em;
   text-transform: none;
   color: rgba(237, 230, 226, 0.55);
+}
+.menu-dish-modal__desc + .menu-dish-modal__desc {
+  margin-top: 0.75rem;
+}
+.menu-dish-modal__copy {
   margin-bottom: 1.25rem;
+}
+.menu-dish-modal__highlights {
+  margin: 1rem 0 0;
+  padding: 0.85rem 0 0 1.1rem;
+  border-top: 1px solid rgba(164, 86, 50, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  list-style: disc;
+  color: rgba(237, 230, 226, 0.62);
+  font-family: var(--font-mono), "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+.menu-dish-modal__highlights li::marker {
+  color: rgba(212, 168, 83, 0.85);
+}
+.menu-dish-modal__seo {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono), "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: rgba(237, 230, 226, 0.28);
 }
 .menu-dish-modal__bar {
   display: flex;
