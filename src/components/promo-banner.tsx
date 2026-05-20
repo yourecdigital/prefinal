@@ -36,7 +36,7 @@ export function PromoBanner() {
           <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.24, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
             <h2 className="text-gold-shimmer display-section leading-[1.0] mb-6">
-              Хачапури<br />по-Аджарски<br />
+              {PROMO.gift.split(" — ")[0]}<br />
               <span className="text-ink">— ПОДАРОК!</span>
             </h2>
           </motion.div>
@@ -64,7 +64,7 @@ export function PromoBanner() {
             <p className="label-caps text-wine/60">Абсолютно бесплатно</p>
             <TelegramEmoji name="gift" size={56} />
             <p className="text-ink font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.2rem,2.5vw,1.6rem)" }}>
-              Хачапури<br />по-Аджарски
+              {PROMO.gift.replace(" — ПОДАРОК!", "")}
             </p>
             <p className="text-ink/35 text-sm text-desc">Успей порадовать себя!</p>
           </div>

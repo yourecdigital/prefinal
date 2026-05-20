@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { AboutSection } from "@/components/about-section";
 import { GeorgianQuote } from "@/components/georgian-quote";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "О нас — грузинский ресторан с доставкой в Петергофе",
-  description: "«Вкусно как в Грузии» — доставка настоящей грузинской кухни в Петергофе, Ломоносове и Стрельне. Традиционные рецепты, свежие продукты, любовь к делу.",
+  title: "О нас — шашлык и мангал с доставкой в Петергофе",
+  description:
+    "«Вкусно как в Грузии» — доставка шашлыка на мангале, люля-кебаба и грузинских блюд в Петергоф, Ломоносов, Стрельну и Петродворцовый район. 41 блюдо, готовим на углях.",
+  alternates: { canonical: `${SITE_URL}/about/` },
 };
 
 export default function AboutPage() {

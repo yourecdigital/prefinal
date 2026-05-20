@@ -21,7 +21,7 @@ export default function NotFound() {
 
       <p className="text-desc text-ink/45 max-w-md mb-10">
         Этой страницы нет. Может, она была — а может, и не&nbsp;было.
-        Зато у&nbsp;нас есть хинкали.
+        Зато у&nbsp;нас есть шашлык с&nbsp;мангала.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4">

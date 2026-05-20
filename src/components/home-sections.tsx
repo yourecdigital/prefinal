@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/hero-section";
 import { PromoBanner } from "@/components/promo-banner";
 import { FeaturesSection } from "@/components/features-section";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
+import { MENU_ITEM_COUNT } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
 
 export function HomeSections() {
@@ -26,7 +27,7 @@ export function HomeSections() {
               Откроем<br /><span className="text-wine">вам Грузию</span>
             </h2>
             <p className="text-ink/45 mb-8 text-desc max-w-sm leading-relaxed">
-              50+ блюд в 10 категориях. Отберите свои фавориты или доверьтесь рекомендациям. Доставим горячим.
+              {MENU_ITEM_COUNT} блюд в 6 категориях. Шашлык, люля, сеты и салаты — доставим горячим с мангала.
             </p>
             <MenuLink className="btn-primary px-10 py-4">Перейти в меню</MenuLink>
           </motion.div>

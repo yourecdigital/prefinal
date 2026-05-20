@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { ContactsContent } from "@/components/contacts-content";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Контакты — заказать доставку грузинской кухни в Петергофе",
-  description: "Закажите доставку грузинской кухни в Петергофе, Ломоносове и Стрельне: +7 (909) 577-75-80, ВКонтакте @vkusno_georgia. Работаем ежедневно 12:00–23:59.",
+  title: "Контакты — заказать шашлык и мангал с доставкой",
+  description:
+    "Заказать доставку шашлыка и грузинской кухни в Петергоф, Ломоносов, Стрельну: +7 (909) 577-75-80, ВКонтакте @vkusno_georgia. Ежедневно 12:00–23:59.",
+  alternates: { canonical: `${SITE_URL}/contacts/` },
 };
 
 export default function ContactsPage() {

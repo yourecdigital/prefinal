@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { DeliveryCards } from "@/components/delivery-cards";
+import { SEO_FAQ, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Доставка грузинской кухни в Петергоф, Ломоносов, Стрельну",
-  description: "Доставка горячих блюд грузинской кухни по Петергофу, Ломоносову и Стрельне за 30–45 минут. Хинкали, хачапури, шашлыки — привезём свежими и горячими прямо к двери.",
+  title: "Доставка шашлыка и мангала в Петергоф, Ломоносов, Стрельну",
+  description:
+    "Доставка шашлыка на мангале, люля-кебаба и грузинских блюд по Петергофу, Ломоносову, Стрельне и Петродворцовому району за 30–45 минут. Зоны и минимальная сумма заказа.",
+  alternates: { canonical: `${SITE_URL}/delivery/` },
 };
 
 const ZONES: { num: number; min: number; areas: string[] }[] = [
@@ -23,9 +26,12 @@ export default function DeliveryPage() {
         <div className="max-w-5xl mx-auto">
           <div className="mb-16">
             <h1 className="display-section text-ink mb-4 leading-tight">
-              Доставка<br /><span className="text-wine">горячих блюд</span>
+              Доставка<br /><span className="text-wine">шашлыка и мангала</span>
             </h1>
-            <p className="text-ink/50 max-w-lg text-desc">Готовим на заказ и доставляем в лучшем виде. Быстро, горячо, вкусно.</p>
+            <p className="text-ink/50 max-w-2xl text-desc">
+              Готовим на углях и доставляем горячим в Петергоф, Ломоносов, Стрельну, Новый и Старый Петергоф,
+              а также по Петродворцовому и Ломоносовскому району.
+            </p>
           </div>
 
           <DeliveryCards />
@@ -34,7 +40,7 @@ export default function DeliveryPage() {
             <h2 className="text-ink font-bold text-3xl sm:text-4xl mb-3" style={{ fontFamily: "var(--font-heading)" }}>
               Зоны <span className="text-wine">доставки</span>
             </h2>
-            <p className="text-ink/45 text-desc mb-8 max-w-2xl">Бесплатная доставка при заказе от указанной суммы. Доставляем в Петергоф, Ломоносов, Стрельну и пригороды.</p>
+            <p className="text-ink/45 text-desc mb-8 max-w-2xl">Бесплатная доставка при заказе от указанной суммы.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {ZONES.map((z) => (
@@ -52,15 +58,15 @@ export default function DeliveryPage() {
             </div>
           </div>
 
-          <div className="menu-card p-8 sm:p-10">
+          <div className="menu-card p-8 sm:p-10 mb-16">
             <h2 className="text-ink font-bold text-2xl mb-6" style={{ fontFamily: "var(--font-heading)" }}>Как заказать</h2>
             <ol className="space-y-4 text-ink/60 text-desc">
               {[
-                "Откройте меню и выберите блюда, которые вам нравятся",
+                "Откройте меню и выберите шашлык, люля, сеты или салаты",
                 "Добавьте блюда в корзину и нажмите «Оформить заказ»",
                 "Заполните имя, телефон и адрес доставки в форме заказа",
                 "Оплатите наличными при получении или онлайн",
-                "Наслаждайтесь! Готовим с любовью, доставляем с заботой",
+                "Наслаждайтесь! Готовим на мангале, доставляем горячим",
               ].map((text, i) => (
                 <li key={i} className="flex gap-4">
                   <span className="text-gold font-bold text-xl flex-shrink-0" style={{ fontFamily: "var(--font-heading)" }}>{i + 1}</span>
@@ -68,6 +74,18 @@ export default function DeliveryPage() {
                 </li>
               ))}
             </ol>
+          </div>
+
+          <div className="menu-card-light p-8 sm:p-10">
+            <h2 className="text-ink font-bold text-2xl mb-6" style={{ fontFamily: "var(--font-heading)" }}>Частые вопросы</h2>
+            <dl className="space-y-6">
+              {SEO_FAQ.map((item) => (
+                <div key={item.question}>
+                  <dt className="text-ink font-semibold mb-2" style={{ fontFamily: "var(--font-heading)" }}>{item.question}</dt>
+                  <dd className="text-ink/55 text-desc leading-relaxed">{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
