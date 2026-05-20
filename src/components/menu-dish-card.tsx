@@ -48,7 +48,7 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
         <button type="button" onClick={() => setOpen(true)} className="menu-dish-card__media"
           aria-label={`Открыть описание: ${item.name}`}>
           {imageSrc && (
-            <Image src={imageSrc} alt={item.name} fill
+            <Image src={imageSrc} alt={`${item.name} — ${categoryLabel}, доставка в Петергофе и Ломоносове`} fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               priority={index < 2} />
@@ -102,7 +102,7 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
                 </button>
                 {imageSrc && (
                   <div className="menu-dish-modal__hero">
-                    <Image src={imageSrc} alt={item.name} fill sizes="(max-width: 768px) 100vw, 560px"
+                    <Image src={imageSrc} alt={`${item.name} — ${categoryLabel}, доставка в Петергофе и Ломоносове`} fill sizes="(max-width: 768px) 100vw, 560px"
                       className="object-cover object-center" priority />
                     <div className="menu-dish-modal__hero-shade" aria-hidden />
                   </div>

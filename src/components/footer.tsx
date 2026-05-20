@@ -42,7 +42,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="label-caps text-cream font-bold">Категории</h3>
             <nav className="flex flex-col gap-3" aria-label="Категории меню">
-              {MENU.slice(0, 5).map((cat) => (
+              {MENU.map((cat) => (
                 <MenuLink key={cat.id} className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</MenuLink>
               ))}
             </nav>

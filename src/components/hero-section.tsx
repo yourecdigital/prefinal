@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { CONTACT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
+import { CONTACT, MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
 import { TypewriterText } from "@/components/ui/typewriter-text";
 import { CaucasusMountains } from "@/components/ui/caucasus-mountains";
@@ -64,7 +64,7 @@ export function HeroSection() {
         <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.7 }}
           className="mt-7 sm:mt-9 text-ink/50 max-w-lg text-desc">
-          Шашлыки на мангале, люля-кебаб, каре ягнёнка и грузинские салаты — готовим на углях
+          Шашлыки на мангале, люля-кебаб, гренки, сулугуни и грузинские салаты — готовим на углях
           и доставляем горячим в{" "}Петергоф, Ломоносов и Стрельну.
         </motion.p>
 
@@ -84,7 +84,7 @@ export function HeroSection() {
           className="mt-8 sm:mt-10 mb-0 sm:mb-0 flex flex-wrap gap-x-10 gap-y-3">
           {[
             { val: String(MENU_ITEM_COUNT), label: "блюд в меню" },
-            { val: "6", label: "категорий" },
+            { val: String(MENU_CATEGORY_COUNT), label: "категорий" },
             { val: "7", label: "дней в неделю" },
           ].map((m) => (
             <div key={m.label} className="flex items-baseline gap-2">

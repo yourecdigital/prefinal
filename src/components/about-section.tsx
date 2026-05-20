@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
-import { MENU_ITEM_COUNT } from "@/lib/georgian-menu";
+import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
 
 export function AboutSection() {
   const ref = useRef<HTMLElement>(null);
@@ -32,7 +32,7 @@ export function AboutSection() {
             <p>Шашлыки на мангале, люля-кебаб, каре ягнёнка, грузинские салаты и сеты — доставляем горячим по Петергофу, Ломоносову, Стрельне и Петродворцовому району.</p>
           </div>
           <div className="mt-10 flex gap-10 flex-wrap">
-            {[{ val: String(MENU_ITEM_COUNT), label: "блюд" }, { val: "6", label: "категорий" }, { val: "7", label: "дней в неделю" }].map((s, i) => (
+            {[{ val: String(MENU_ITEM_COUNT), label: "блюд" }, { val: String(MENU_CATEGORY_COUNT), label: "категорий" }, { val: "7", label: "дней в неделю" }].map((s, i) => (
               <motion.div key={s.label} initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }} className="flex flex-col">
                 <span className="font-bold text-gold" style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2rem,4vw,3rem)" }}>{s.val}</span>
