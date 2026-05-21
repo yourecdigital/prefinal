@@ -2494,6 +2494,18 @@
 .ambient-video-frame {
   position: relative;
   isolation: isolate;
+  background: #0c090a;
+}
+.ambient-video-frame--home {
+  min-height: 16rem;
+}
+.ambient-video-frame--home .ambient-video__veil {
+  background:
+    linear-gradient(180deg, rgba(8, 6, 8, 0) 0%, rgba(8, 6, 8, 0.08) 65%, rgba(8, 6, 8, 0.28) 100%),
+    radial-gradient(ellipse at center, transparent 55%, rgba(8, 6, 8, 0.12) 100%);
+}
+.ambient-video-frame--home .ambient-video__media {
+  object-position: center center;
 }
 .ambient-video {
   position: absolute;
@@ -2512,9 +2524,13 @@
   -webkit-user-drag: none;
 }
 .ambient-video--square,
-.ambient-video--cover {
+.ambient-video--cover,
+.ambient-video--widescreen {
   position: absolute;
   inset: 0;
+}
+.ambient-video--widescreen .ambient-video__media {
+  object-position: center center;
 }
 .ambient-video__veil {
   position: absolute;
@@ -2539,10 +2555,15 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .ambient-video__media { display: none; }
-  .ambient-video-frame:not(.ambient-video-frame--about) {
+  .ambient-video-frame:not(.ambient-video-frame--about):not(.ambient-video-frame--home) {
     background:
       radial-gradient(circle at 35% 30%, rgba(164, 86, 50, 0.35), transparent 55%),
       linear-gradient(145deg, rgba(20, 12, 10, 0.92), rgba(8, 6, 8, 0.98));
+  }
+  .ambient-video-frame--home {
+    background:
+      radial-gradient(circle at 40% 35%, rgba(164, 86, 50, 0.45), transparent 58%),
+      linear-gradient(145deg, rgba(28, 16, 12, 0.95), rgba(8, 6, 8, 0.98));
   }
   .ambient-video-frame--about {
     background: linear-gradient(145deg, rgba(114, 47, 55, 0.45), rgba(8, 6, 8, 0.95));

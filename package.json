@@ -9,7 +9,9 @@
     "start": "serve out -l 3000",
     "preview": "npm run build && serve out -l 3000",
     "lint": "eslint",
-    "telegram-emojis": "node scripts/sync-telegram-emojis.mjs"
+    "telegram-emojis": "node scripts/sync-telegram-emojis.mjs",
+    "compress-menu": "node scripts/compress-menu-images.mjs && node scripts/patch-menu-webp.mjs",
+    "compress-drinks": "node scripts/compress-drinks-images.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

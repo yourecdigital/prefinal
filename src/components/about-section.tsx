@@ -47,8 +47,8 @@ export function AboutSection() {
           transition={{ delay: 0.2, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}>
           <div className="relative rounded-2xl overflow-hidden p-px ambient-video-frame ambient-video-frame--about"
             style={{ background: "linear-gradient(135deg, rgba(212,169,58,0.35) 0%, rgba(114,47,55,0.2) 50%, rgba(212,169,58,0.1) 100%)" }}>
-            <div className="relative rounded-2xl overflow-hidden aspect-square sm:aspect-[4/5] lg:aspect-square min-h-[280px]">
-              <AmbientGrillVideo src="/videos/grill-chef.mp4" className="ambient-video--cover" />
+            <div className="relative rounded-2xl overflow-hidden aspect-video w-full min-h-[200px]">
+              <AmbientGrillVideo src="/videos/grill-about.mp4" className="ambient-video--widescreen" />
               <div className="ambient-video-quote pointer-events-none">
                 <blockquote className="text-cream italic font-bold drop-shadow-lg"
                   style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.2rem,2.8vw,1.75rem)", lineHeight: 1.25 }}>

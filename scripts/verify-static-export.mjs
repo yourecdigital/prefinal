@@ -19,8 +19,10 @@ const REQUIRED_IN_OUT = [
   "mountains/caucasus-far.png",
   "mountains/caucasus-mid.png",
   "mountains/caucasus-near.png",
-  "menu/mangal/kare-yagnenka.png",
-  "menu/mangal/myakot-baraniny.png",
+  "menu/mangal/kare-yagnenka.webp",
+  "menu/mangal/myakot-baraniny.webp",
+  "videos/grill-shashlik.mp4",
+  "videos/grill-shashlik-poster.jpg",
 ];
 
 function exists(p) {

@@ -27,14 +27,18 @@ export function HomeSections() {
               Откроем<br /><span className="text-wine">вам Грузию</span>
             </h2>
             <p className="text-ink/45 mb-8 text-desc max-w-sm leading-relaxed">
-              {MENU_ITEM_COUNT} блюд в {MENU_CATEGORY_COUNT} категориях. Шашлык, хачапури, горячие закуски, сеты и салаты — доставим горячим с мангала.
+              {MENU_ITEM_COUNT} позиций в {MENU_CATEGORY_COUNT} категориях. Шашлык, хачапури, горячие закуски, напитки, сеты и салаты — доставим горячим с мангала.
             </p>
             <MenuLink className="btn-primary px-10 py-4">Перейти в меню</MenuLink>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }} viewport={{ once: true }} className="home-split__aside">
-            <div className="menu-card-light ambient-video-frame rounded-2xl aspect-square w-full overflow-hidden border border-wine/20">
-              <AmbientGrillVideo src="/videos/grill-mangal.mp4" className="ambient-video--square" />
+            <div className="ambient-video-frame ambient-video-frame--home rounded-2xl aspect-square w-full max-w-[22rem] mx-auto lg:mx-0 lg:max-w-none overflow-hidden border border-wine/25 shadow-[0_20px_56px_rgba(0,0,0,0.45)]">
+              <AmbientGrillVideo
+                src="/videos/grill-shashlik.mp4"
+                poster="/videos/grill-shashlik-poster.jpg"
+                className="ambient-video--square"
+              />
             </div>
           </motion.div>
         </div>

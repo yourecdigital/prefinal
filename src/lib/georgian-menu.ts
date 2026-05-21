@@ -1,5 +1,6 @@
 import type { TelegramEmojiId } from "@/lib/telegram-emoji";
 import { SITE_URL } from "@/lib/seo";
+import { DRINKS_CATEGORY } from "@/lib/menu-drinks";
 
 export interface MenuItem {
   name: string;
@@ -24,7 +25,7 @@ export interface MenuCategory {
   items: MenuItem[];
 }
 
-/** 53 позиции — полное меню с выпечкой и горячими закусками */
+/** 69 позиций — полное меню с напитками, выпечкой и горячими закусками */
 export const MENU: MenuCategory[] = [
   {
     id: "mangal",
@@ -35,81 +36,81 @@ export const MENU: MenuCategory[] = [
         name: "Каре ягнёнка",
         price: 1250,
         badge: "хит",
-        image: "/menu/mangal/kare-yagnenka.png",
+        image: "/menu/mangal/kare-yagnenka.webp",
         shortDesc: "Нежнейшие рёбрышки на кости, обжаренные на углях с пряным дымком — тают во рту",
         desc: "Каре ягнёнка на углях — фирменная позиция мангала. Мясо сочное, с лёгким дымком и пряной корочкой, подаётся с красным луком и свежей зеленью.",
       },
       {
         name: "Куриные крылышки",
         price: 550,
-        image: "/menu/mangal/kurinye-krylyshki.png",
+        image: "/menu/mangal/kurinye-krylyshki.webp",
         shortDesc: "Хрустящие крылышки с мангала — идеальная закуска с аджикой",
       },
       {
         name: "Люля баранина",
         price: 1050,
-        image: "/menu/mangal/lyulya-baranina.png",
+        image: "/menu/mangal/lyulya-baranina.webp",
         shortDesc: "Рубленая баранина со специями, обжаренная на шампуре — классика Кавказа",
       },
       {
         name: "Мякоть баранины",
         price: 1100,
-        image: "/menu/mangal/myakot-baraniny.png",
+        image: "/menu/mangal/myakot-baraniny.webp",
         shortDesc: "Сочные кусочки молодого барашка с ароматом горных трав и лёгкой перчинкой",
         desc: "Мякоть молодой баранины, маринованная по домашнему рецепту и обжаренная на мангале до сочной середины.",
       },
       {
         name: "Люля свинина",
         price: 700,
-        image: "/menu/mangal/lyulya-svinina.png",
+        image: "/menu/mangal/lyulya-svinina.webp",
         shortDesc: "Сочная рубленая свинина на углях с ароматом восточных пряностей",
       },
       {
         name: "Антрекот свинина",
         price: 800,
-        image: "/menu/mangal/antrekot-svinina.png",
+        image: "/menu/mangal/antrekot-svinina.webp",
         shortDesc: "Толстый стейк на кости, обжаренный на углях до золотистой корочки",
       },
       {
         name: "Свиные рёбра",
         price: 600,
-        image: "/menu/mangal/svinye-ryobra.png",
+        image: "/menu/mangal/svinye-ryobra.webp",
         shortDesc: "Томлённые рёбрышки с мангала — мясо само отходит от кости",
       },
       {
         name: "Шашлык из куры",
         price: 600,
-        image: "/menu/mangal/shashlik-kura.png",
+        image: "/menu/mangal/shashlik-kura.webp",
         shortDesc: "Маринованное в специях куриное филе с сочной серединкой и дымком",
       },
       {
         name: "Шашлык из свинины (окорок)",
         price: 650,
-        image: "/menu/mangal/shashlik-svinina-okorok.png",
+        image: "/menu/mangal/shashlik-svinina-okorok.webp",
         shortDesc: "Плотное, в меру жирное мясо с хрустящей корочкой и нежной серединкой",
       },
       {
         name: "Шашлык из свинины (шея)",
         price: 750,
-        image: "/menu/mangal/shashlik-svinina-sheya.png",
+        image: "/menu/mangal/shashlik-svinina-sheya.webp",
         shortDesc: "Мраморная шейка на углях — самый сочный и ароматный шашлык с дымком",
       },
       {
         name: "Люля курица",
         price: 650,
-        image: "/menu/mangal/lyulya-kuritsa.png",
+        image: "/menu/mangal/lyulya-kuritsa.webp",
         shortDesc: "Нежная куриная люля с зеленью и секретной смесью специй",
       },
       {
         name: "Овощи на мангале",
         price: 550,
-        image: "/menu/mangal/ovoshi-mangal.png",
+        image: "/menu/mangal/ovoshi-mangal.webp",
         shortDesc: "Баклажан, перец, томат и лук — обожжённые огнём, с дымком и маслом",
       },
       {
         name: "Мангал салат",
         price: 600,
-        image: "/menu/mangal/mangal-salat.png",
+        image: "/menu/mangal/mangal-salat.webp",
         shortDesc: "Тёплый салат из овощей гриль с ароматным маслом и зеленью",
       },
     ],
@@ -122,20 +123,20 @@ export const MENU: MenuCategory[] = [
       {
         name: "Сет «Классик»",
         price: 2300,
-        image: "/menu/sets/set-klassik.png",
+        image: "/menu/sets/set-klassik.webp",
         shortDesc: "Шашлык из свинины, курицы, люля, овощи на мангале, лаваш, соус и маринованный лук",
       },
       {
         name: "Сет «Премиум»",
         price: 3500,
         badge: "хит",
-        image: "/menu/sets/set-premium.png",
+        image: "/menu/sets/set-premium.webp",
         shortDesc: "Каре ягнёнка, мякоть баранины, шашлык, люля, овощи гриль, лаваш, соус и лук",
       },
       {
         name: "Сет «Семейный»",
         price: 4500,
-        image: "/menu/sets/set-semejnyj.png",
+        image: "/menu/sets/set-semejnyj.webp",
         shortDesc: "Каре, баранина, свинина, курица, две люля, овощи, лаваш и соусы",
       },
       {
@@ -156,13 +157,13 @@ export const MENU: MenuCategory[] = [
       {
         name: "Комбо 1",
         price: 750,
-        image: "/menu/sets/kombo-1.png",
+        image: "/menu/sets/kombo-1.webp",
         shortDesc: "Шашлык из свинины с лавашом, маринованным луком и фирменным соусом",
       },
       {
         name: "Комбо 2",
         price: 850,
-        image: "/menu/sets/kombo-2.png",
+        image: "/menu/sets/kombo-2.webp",
         shortDesc: "Люля из курицы с овощами на мангале, лавашом и соусом на выбор",
       },
     ],
@@ -175,25 +176,25 @@ export const MENU: MenuCategory[] = [
       {
         name: "Аджапсандал",
         price: 650,
-        image: "/menu/cold-starters/adjapsandal.png",
+        image: "/menu/cold-starters/adjapsandal.webp",
         shortDesc: "Холодное рагу из печёных баклажанов, перца и томатов с кинзой",
       },
       {
         name: "Ассорти сыров",
         price: 900,
-        image: "/menu/cold-starters/assorti-syrov.png",
+        image: "/menu/cold-starters/assorti-syrov.webp",
         shortDesc: "Сулугуни, имеретинский, копчёный — грузинское трио для ценителей",
       },
       {
         name: "Домашние соленья",
         price: 600,
-        image: "/menu/cold-starters/domashnie-solenya.png",
+        image: "/menu/cold-starters/domashnie-solenya.webp",
         shortDesc: "Хрустящие огурчики, томаты, перец и чеснок — бабушкин рецепт",
       },
       {
         name: "Сельдь с картофелем",
         price: 690,
-        image: "/menu/cold-starters/seld-s-kartofelem.png",
+        image: "/menu/cold-starters/seld-s-kartofelem.webp",
         shortDesc: "Малосольная сельдь с отварным картофелем и кольцами лука",
       },
     ],
@@ -206,7 +207,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Гренки",
         price: 290,
-        image: "/menu/hot-starters/grenki.png",
+        image: "/menu/hot-starters/grenki.webp",
         shortDesc: "Хрустящие ржаные гренки с чесноком и травами — идеальный старт к шашлыку и мангалу. Подаём горячими, с фирменным соусом.",
         desc: "Представьте: хруст с первого укуса, аромат запечённого чеснока и нежный сливочный соус с укропом. Наши гренки готовят из ржаного хлеба — обжаривают до золотистой корочки, натирают чесноком и подают с целыми зубчиками запечённого чеснока.\n\nЭто та закуска, с которой начинается настоящий грузинский стол: простая, щедрая, с душой. Отлично к пиву, к шашлыку или просто «на двоих с соусом».",
         highlights: ["Готовим на заказ — привозим горячими", "Фирменный чесночный соус в комплекте", "Идеально к шашлыку и люля"],
@@ -215,7 +216,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Гренки с чесноком",
         price: 320,
-        image: "/menu/hot-starters/grenki-chesnok.png",
+        image: "/menu/hot-starters/grenki-chesnok.webp",
         shortDesc: "Золотистые гренки из тёмного хлеба с чесночным соусом и запечённым чесноком — хруст, аромат, тепло. Хит к мангалу.",
         desc: "Толстые ломтики тёмного хлеба, обжаренные до хруста и посыпанные сырной стружкой с ароматными травами. Рядом — кремовый чесночный соус, запечённые зубчики чеснока и свежая зелень.\n\nЗакуска, от которой невозможно оторваться: сочетание хруста, чеснока и нежного соуса работает на все 100%. Закажите к основному — гости скажут спасибо.",
         highlights: ["Хрустящая корочка, мягкая середина", "Сливочно-чесночный соус и зелень", "Доставка за 30–45 минут"],
@@ -224,7 +225,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Гренки с сыром",
         price: 390,
-        image: "/menu/hot-starters/grenki-syr.png",
+        image: "/menu/hot-starters/grenki-syr.webp",
         shortDesc: "Гренки под шапкой расплавленного сыра с зелёным луком и чесночным соусом — сыр тянется, хлеб хрустит. Согревающая классика.",
         desc: "Белый хлеб, запечённый под щедрым слоем расплавленного сыра до золотистых пузырьков. Сверху — свежий зелёный лук, рядом — густой чесночный соус с укропом.\n\nСырная закуска, которая украсит любой стол: и к шашлыку, и к вину, и как самостоятельное удовольствие. Готовим перед отправкой — сыр ещё тянется, когда открываете коробку.",
         highlights: ["Расплавленный сыр прямо из печи", "Чесночный соус с укропом", "Отлично на компанию"],
@@ -234,7 +235,7 @@ export const MENU: MenuCategory[] = [
         name: "Гренки с чесноком и сыром",
         price: 450,
         badge: "хит",
-        image: "/menu/hot-starters/grenki-chesnok-syr.png",
+        image: "/menu/hot-starters/grenki-chesnok-syr.webp",
         shortDesc: "Тосты с чесноком, плавленым сыром и сливочным соусом — самая популярная закуска. Хруст + сыр + чеснок = идеальный заказ.",
         desc: "Наш бestseller среди закусок. Свежий хлеб, чеснок, двойная порция расплавленного сыра и фирменный сливочно-чесночный соус — всё, что нужно, чтобы вечер стал праздником.\n\nГренки с чесноком и сыром заказывают чаще всего к мангалу и сетам: они быстро съедаются, все довольны, и хочется добавить ещё. Попробуйте — поймёте, почему.",
         highlights: ["Хит меню — заказывают чаще всего", "Чеснок + сыр + фирменный соус", "Горячая доставка по району"],
@@ -243,7 +244,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Грибы сулугуни",
         price: 690,
-        image: "/menu/hot-starters/griby-suluguni.png",
+        image: "/menu/hot-starters/griby-suluguni.webp",
         shortDesc: "Шампиньоны, запечённые с настоящим сулугуни в ketsi — сочные, с золотистой сырной шапкой. С острым соусом.",
         desc: "Целые шампиньоны, начиненные и запечённые с грузинским сулугуни в традиционной глиняной посуде ketsi. Сыр золотится в печи, грибы остаются сочными, а сверху — свежий укроп.\n\nПодаём с насыщенным красным соусом — аджикой или сацебели на выбор. Блюдо для тех, кто любит сыр, но хочет что-то особенное — не просто сырник, а настоящая грузинская классика.",
         highlights: ["Настоящий сулугуни в глиняной ketsi", "Сочные грибы, золотистый сыр", "Острый соус в комплекте"],
@@ -252,7 +253,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Сулугуни жареный",
         price: 490,
-        image: "/menu/hot-starters/suluguni-zharenyj.png",
+        image: "/menu/hot-starters/suluguni-zharenyj.webp",
         shortDesc: "Тянущийся сулугуни в хрустящей корочке — с гранатом, зеленью и ароматным соусом. Сыр, который все любят.",
         desc: "Грузинский сулугуни, обжаренный до золотистой корочки — снаружи хруст, внутри тянущаяся, тёплая, солоноватая сердцевина. Украшаем гранатовыми зёрнами, свежей зеленью и подаём с ароматным зелёным соусом.\n\nОбязательная закуска для любителей сыра: просто, эффектно, по-грузински щедро. Закажите к шашлыку или как самостоятельное блюдо — не пожалеете.",
         highlights: ["Тянущийся сулугуни — хруст снаружи", "Гранат и зелёный соус", "Готовим перед доставкой"],
@@ -268,7 +269,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Хачапури по-имеретински",
         price: 700,
-        image: "/menu/baking/khachapuri-imeretinski.png",
+        image: "/menu/baking/khachapuri-imeretinski.webp",
         shortDesc: "Круглая лепёшка с нежным имеретинским сыром и кусочком масла — классика Грузии. Мягкое тесто, тянущаяся начинка.",
         desc: "Самый узнаваемый хачапури в мире. Круглая, румяная лепёшка из воздушного теста, начинённая нежным имеретинским сыром. В центре — кусочек сливочного масла, которое тает, когда вы разрезаете.\n\nИмеретинский хачапури — это тепло домашней кухни: мягкий, сырный, без лишнего. Идеален на семейный ужин, к чаю или как дополнение к шашлыку. Закажите горячим — сыр ещё тянется.",
         highlights: ["Классический рецепт из Имеретии", "Нежный сыр и сливочное масло", "Печём перед отправкой"],
@@ -278,7 +279,7 @@ export const MENU: MenuCategory[] = [
         name: "Хачапури по-Аджарски",
         price: 700,
         badge: "хит",
-        image: "/menu/baking/khachapuri-adzharski.png",
+        image: "/menu/baking/khachapuri-adzharski.webp",
         shortDesc: "Лодочка из теста с сыром, маслом и яйцом — визитная карточка Грузии. Перемешайте и наслаждайтесь, пока горячий.",
         desc: "Аджарский хачапури — легенда. Открытая «лодочка» из пышного теста, щедро наполненная расплавленным сулугуни, с кусочком сливочного масла и свежим яйцом в центре.\n\nРитуал простой и гениальный: размешайте яйцо, масло и сыр прямо в лодочке — и окунитесь в кремовую, солоноватую, тёплую негу. Это блюдо заказывают чаще всего — попробуйте и вы поймёте почему.",
         highlights: ["Символ грузинской кухни №1", "Сыр + масло + яйцо — кремовая нега", "Привозим горячим за 30–45 мин"],
@@ -288,7 +289,7 @@ export const MENU: MenuCategory[] = [
         name: "Хачапури по-мегрельски",
         price: 800,
         badge: "хит",
-        image: "/menu/baking/khachapuri-megrelski.png",
+        image: "/menu/baking/khachapuri-megrelski.webp",
         shortDesc: "Двойной сыр — внутри и сверху золотистая корочка с маслом. Для тех, кто любит сыр по-настоящему.",
         desc: "Мегрельский хачапури — это двойная порция счастья. Тесто начинено сулугуни, а сверху — ещё один щедрый слой, запечённый до золотистых подрумяненных пятен. В центре тает кусочек масла.\n\nЕсли вы за «чем больше сыра, тем лучше» — это ваш выбор. Хрустящая корочка, тянущийся сыр, аромат свежего теста. Закажите на компанию — одного может не хватить.",
         highlights: ["Сыр внутри и снаружи — двойная порция", "Золотистая корочка из печи", "Хит среди любителей сыра"],
@@ -297,7 +298,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Кубдари с курицей",
         price: 800,
-        image: "/menu/baking/kubdari-kuritsa.png",
+        image: "/menu/baking/kubdari-kuritsa.webp",
         shortDesc: "Сванский пирог с сочной курицей, зеленью и специями — сочная начинка в хрустящем тесте. Сытно и по-грузински.",
         desc: "Кубдари — гордость Сванетии. Плотная, ароматная лепёшка с начинкой из рубленой курицы, свежей зелени и сванских специй. Тесто золотистое, начинка сочная — режете дольками и делите с близкими.\n\nЛёгкая альтернатива классическому мясному кубдари: не менее сытно, но нежнее. Отличный выбор на обед, ужин или перекус после прогулки по Петергофу.",
         highlights: ["Рецепт из Сванетии", "Сочная курица и ароматные специи", "Сытный пирог на 2–3 человека"],
@@ -306,7 +307,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Кубдари со свининой",
         price: 850,
-        image: "/menu/baking/kubdari-svinina.png",
+        image: "/menu/baking/kubdari-svinina.webp",
         shortDesc: "Лепёшка с кусочками сочной свинины, луком и ореховым соусом — мясной пирог для настоящих гурманов.",
         desc: "Открытая лепёшка с щедрой порцией обжаренной свинины, красным луком, свежей зеленью и грузинским соусом на основе грецкого ореха и специй. Мясо сочное, тесто хрустящее по краям.\n\nЭто блюдо для тех, кто хочет мясо и хлеб в одном — сытно, ароматно, по-домашнему щедро. Идеально к холодному вечеру или как главное блюдо на двоих.",
         highlights: ["Сочная свинина и ореховый соус", "Сытная порция на двоих", "Грузинские специи и зелень"],
@@ -315,7 +316,7 @@ export const MENU: MenuCategory[] = [
       {
         name: "Лепёшка из тандыра",
         price: 170,
-        image: "/menu/baking/lepeshka-tandyr.png",
+        image: "/menu/baking/lepeshka-tandyr.webp",
         shortDesc: "Горячий хлеб из тандыра — хруст снаружи, мягкий внутри, кунжут. К шашлыку, соусам и сырному хачапури.",
         desc: "Настоящая лепёшка из тандыра: пышная, с характерными подпалинами, посыпанная кунжутом. Снаружи — лёгкий хруст, внутри — мягкая, тёплая мякоть.\n\nПодайте с маслом, аджикой или сацебели — или просто срывайте кусочки к шашлыку. Недорогой, но обязательный гарнир к любому заказу с мангала. Добавьте в корзину — не пожалеете.",
         highlights: ["Выпекаем в тандыре", "Кунжутная корочка", "Идеальный гарнир к мангалу — от 170 ₽"],
@@ -331,31 +332,31 @@ export const MENU: MenuCategory[] = [
       {
         name: "Цезарь с креветками",
         price: 950,
-        image: "/menu/salads/cezar-krevetki.png",
+        image: "/menu/salads/cezar-krevetki.webp",
         shortDesc: "Нежные креветки на подушке из романо с сырной стружкой и крутонами",
       },
       {
         name: "Цезарь с курицей",
         price: 790,
-        image: "/menu/salads/cezar-kuritsa.png",
+        image: "/menu/salads/cezar-kuritsa.webp",
         shortDesc: "Классика с хрустящей курицей, пармезаном и фирменным соусом",
       },
       {
         name: "Салат по-грузински",
         price: 690,
-        image: "/menu/salads/salat-gruzinski.png",
+        image: "/menu/salads/salat-gruzinski.webp",
         shortDesc: "Свежие овощи, грецкий орех, кинза и пряная заправка — вкус Тбилиси",
       },
       {
         name: "Салат с баклажанами",
         price: 750,
-        image: "/menu/salads/salat-baklazhany.png",
+        image: "/menu/salads/salat-baklazhany.webp",
         shortDesc: "Печёные баклажаны с томатами, орехами и гранатовыми зёрнами",
       },
       {
         name: "Салат с хрустящими баклажанами",
         price: 850,
-        image: "/menu/salads/salat-hrustyashchie-baklazhany.png",
+        image: "/menu/salads/salat-hrustyashchie-baklazhany.webp",
         shortDesc: "Хрустящие баклажаны, микс зелени, орех и гранатовый соус наршараб",
       },
     ],
@@ -368,25 +369,25 @@ export const MENU: MenuCategory[] = [
       {
         name: "Картофель айдахо",
         price: 300,
-        image: "/menu/sides/kartofel-aydaho.png",
+        image: "/menu/sides/kartofel-aydaho.webp",
         shortDesc: "Запечённые дольки картофеля с хрустящей корочкой и пряностями",
       },
       {
         name: "Картофель фри",
         price: 300,
-        image: "/menu/sides/kartofel-fri.png",
+        image: "/menu/sides/kartofel-fri.webp",
         shortDesc: "Золотистый хрустящий картофель — классика, любимая всеми",
       },
       {
         name: "Айдахо с аджикой",
         price: 400,
-        image: "/menu/sides/aydaho-adzhika.png",
+        image: "/menu/sides/aydaho-adzhika.webp",
         shortDesc: "Пряные дольки картофеля с огненной грузинской аджикой",
       },
       {
         name: "Фри с сулугуни",
         price: 450,
-        image: "/menu/sides/fri-suluguni.png",
+        image: "/menu/sides/fri-suluguni.webp",
         shortDesc: "Горячий фри под шапкой из расплавленного сулугуни — объедение",
       },
     ],
@@ -396,15 +397,16 @@ export const MENU: MenuCategory[] = [
     title: "Соусы",
     emoji: "sauce",
     items: [
-      { name: "Сацебели", price: 120, image: "/menu/sauces/sacebeli.png", shortDesc: "Пикантный томатный соус с грузинскими специями и кинзой" },
-      { name: "Аджика", price: 120, image: "/menu/sauces/adjika.png", shortDesc: "Жгучая паста из острого перца, чеснока и пряных трав" },
-      { name: "Чесночный", price: 120, image: "/menu/sauces/chesnochnyj.png", shortDesc: "Нежный сливочный соус с ароматным чесноком и зеленью" },
-      { name: "Кетчуп", price: 120, image: "/menu/sauces/ketchup.png", shortDesc: "Классический томатный соус — всегда кстати к мясу" },
-      { name: "Сырный", price: 120, image: "/menu/sauces/syrnyj.png", shortDesc: "Сливочно-сырный соус для тех, кто любит понежнее" },
-      { name: "Барбекю", price: 120, image: "/menu/sauces/barbekyu.png", shortDesc: "Копчёно-сладкий соус с дымком — для любителей мангала" },
-      { name: "Сметана", price: 120, image: "/menu/sauces/smetana.png", shortDesc: "Свежая деревенская сметана — идеальна к шашлыку и салатам" },
+      { name: "Сацебели", price: 120, image: "/menu/sauces/sacebeli.webp", shortDesc: "Пикантный томатный соус с грузинскими специями и кинзой" },
+      { name: "Аджика", price: 120, image: "/menu/sauces/adjika.webp", shortDesc: "Жгучая паста из острого перца, чеснока и пряных трав" },
+      { name: "Чесночный", price: 120, image: "/menu/sauces/chesnochnyj.webp", shortDesc: "Нежный сливочный соус с ароматным чесноком и зеленью" },
+      { name: "Кетчуп", price: 120, image: "/menu/sauces/ketchup.webp", shortDesc: "Классический томатный соус — всегда кстати к мясу" },
+      { name: "Сырный", price: 120, image: "/menu/sauces/syrnyj.webp", shortDesc: "Сливочно-сырный соус для тех, кто любит понежнее" },
+      { name: "Барбекю", price: 120, image: "/menu/sauces/barbekyu.webp", shortDesc: "Копчёно-сладкий соус с дымком — для любителей мангала" },
+      { name: "Сметана", price: 120, image: "/menu/sauces/smetana.webp", shortDesc: "Свежая деревенская сметана — идеальна к шашлыку и салатам" },
     ],
   },
+  DRINKS_CATEGORY,
 ];
 
 export const MENU_ITEM_COUNT = MENU.reduce((sum, cat) => sum + cat.items.length, 0);
@@ -429,7 +431,7 @@ export const SITE = {
   name: "Вкусно как в Грузии",
   url: SITE_URL,
   description:
-    "Доставка шашлыка на мангале, хачапури, люля-кебаба, горячих закусок, грузинских салатов и сетов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе. 53 блюда — готовим на углях и привозим горячим.",
+    "Доставка шашлыка на мангале, хачапури, люля-кебаба, горячих закусок, грузинских салатов, напитков и сетов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе. 69 позиций — готовим на углях и привозим горячим.",
   hours: { open: "12:00", close: "23:59" },
   geo: {
     areas: ["Петергоф", "Ломоносов", "Стрельна", "Новый Петергоф", "Старый Петергоф", "Петродворцовый район", "Ломоносовский район"],
