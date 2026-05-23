@@ -8,7 +8,10 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { CartProvider } from "@/components/cart-provider";
 import { SeoJsonLd } from "@/components/seo-json-ld";
-import { SEO_DEFAULT, SEO_KEYWORDS, SITE_URL } from "@/lib/seo";
+import { YandexMetrika } from "@/components/yandex-metrika";
+import { OgHeadExtras } from "@/components/og-head-extras";
+import { ogImageField, OG_SHARE } from "@/lib/og-share";
+import { GOOGLE_SITE_VERIFICATION, SEO_DEFAULT, SEO_KEYWORDS, SITE_URL } from "@/lib/seo";
 
 const headingFont = Unbounded({
   variable: "--font-heading",
@@ -39,17 +42,47 @@ export const metadata: Metadata = {
   },
   description: SEO_DEFAULT.description,
   keywords: [...SEO_KEYWORDS],
-  alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
-    title: "«Вкусно как в Грузии» — доставка мангала и грузинской кухни в Петергофе, Ломоносове, Стрельне",
-    description: SEO_DEFAULT.ogDescription,
+    title: OG_SHARE.title,
+    description: OG_SHARE.description,
     locale: "ru_RU",
     type: "website",
     siteName: "Вкусно как в Грузии",
     url: `${SITE_URL}/`,
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Вкусно как в Грузии — доставка шашлыка в Петергофе" }],
+    images: [ogImageField()],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: OG_SHARE.title,
+    description: OG_SHARE.description,
+    images: [ogImageField().url],
+  },
+  verification: {
+    google: GOOGLE_SITE_VERIFICATION,
+    ...(process.env.YANDEX_VERIFICATION
+      ? { yandex: process.env.YANDEX_VERIFICATION }
+      : {}),
+  },
+  category: "food",
+  applicationName: "Вкусно как в Грузии",
+  authors: [{ name: "Вкусно как в Грузии" }],
+  creator: "Вкусно как в Грузии",
+  publisher: "Вкусно как в Грузии",
+  formatDetection: { telephone: true, email: true },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   other: {
     "geo.region": "RU-SPE",
     "geo.placename": "Петергоф, Санкт-Петербург",
@@ -65,8 +98,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${headingFont.variable} ${monoFont.variable}`}>
+      <head>
+        <OgHeadExtras />
+      </head>
       <body className="antialiased">
         <SeoJsonLd />
+        <YandexMetrika />
         <SmoothScrollProvider>
           <MenuHashScroll />
           <Nav />

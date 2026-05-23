@@ -4,20 +4,21 @@ import Link from "next/link";
 import { CONTACT, MENU, MENU_HREF, SITE } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
 import { LEGAL } from "@/lib/legal";
+import { SEO_LANDINGS, seoLandingPath } from "@/lib/seo-landings";
 import { VkIcon } from "@/components/ui/icons";
 
 const LINKS = [
   { label: "Меню", href: MENU_HREF },
-  { label: "О нас", href: "/about" },
-  { label: "Доставка", href: "/delivery" },
-  { label: "Контакты", href: "/contacts" },
+  { label: "О нас", href: "/about/" },
+  { label: "Доставка", href: "/delivery/" },
+  { label: "Контакты", href: "/contacts/" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-dark border-t border-cream/[0.06] py-16 sm:py-20 px-6 sm:px-10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col leading-none">
               <span className="label-caps text-gold/70">Доставка</span>
@@ -44,6 +45,20 @@ export function Footer() {
             <nav className="flex flex-col gap-3" aria-label="Категории меню">
               {MENU.map((cat) => (
                 <MenuLink key={cat.id} className="text-cream/40 hover:text-cream transition-colors text-sm">{cat.title}</MenuLink>
+              ))}
+            </nav>
+          </div>
+          <div className="flex flex-col gap-4">
+            <h3 className="label-caps text-cream font-bold">Популярное</h3>
+            <nav className="flex flex-col gap-3" aria-label="Популярные запросы">
+              {SEO_LANDINGS.map((l) => (
+                <Link
+                  key={l.slug}
+                  href={seoLandingPath(l.slug)}
+                  className="text-cream/40 hover:text-cream transition-colors text-sm"
+                >
+                  {l.h1} {l.h1Accent ?? ""}
+                </Link>
               ))}
             </nav>
           </div>

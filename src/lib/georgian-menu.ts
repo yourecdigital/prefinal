@@ -1,5 +1,5 @@
 import type { TelegramEmojiId } from "@/lib/telegram-emoji";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 import { DRINKS_CATEGORY } from "@/lib/menu-drinks";
 
 export interface MenuItem {
@@ -409,9 +409,6 @@ export const MENU: MenuCategory[] = [
   DRINKS_CATEGORY,
 ];
 
-export const MENU_ITEM_COUNT = MENU.reduce((sum, cat) => sum + cat.items.length, 0);
-export const MENU_CATEGORY_COUNT = MENU.length;
-
 export const CONTACT = {
   phone: "+7 (909) 577-75-80",
   phoneRaw: "+79095777580",
@@ -431,7 +428,7 @@ export const SITE = {
   name: "Вкусно как в Грузии",
   url: SITE_URL,
   description:
-    "Доставка шашлыка на мангале, хачапури, люля-кебаба, горячих закусок, грузинских салатов, напитков и сетов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе. 69 позиций — готовим на углях и привозим горячим.",
+    "Доставка шашлыка на мангале, хачапури, люля-кебаба, горячих закусок, грузинских салатов, напитков и сетов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе — готовим на углях и привозим горячим.",
   hours: { open: "12:00", close: "23:59" },
   geo: {
     areas: ["Петергоф", "Ломоносов", "Стрельна", "Новый Петергоф", "Старый Петергоф", "Петродворцовый район", "Ломоносовский район"],

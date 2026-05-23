@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalDocument, LegalList, LegalSection } from "@/components/legal-document";
 import { LEGAL } from "@/lib/legal";
 import { SITE } from "@/lib/georgian-menu";
 import { MenuLink } from "@/components/menu-link";
+import { pageSeoMetadata } from "@/lib/page-seo";
 
-export const metadata: Metadata = {
+export const metadata = pageSeoMetadata({
   title: "Публичная оферта",
   description: `Договор публичной оферты на оказание услуг доставки готовых блюд «${LEGAL.siteName}».`,
-};
+  pathname: "/offer/",
+});
 
 const op = LEGAL.operator;
 

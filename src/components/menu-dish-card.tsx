@@ -43,7 +43,7 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-        className="menu-dish-card group"
+        className="menu-dish-card menu-dish-card--grid group h-full"
       >
         <button type="button" onClick={() => setOpen(true)} className="menu-dish-card__media"
           aria-label={`Открыть описание: ${item.name}`}>
@@ -51,7 +51,8 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
             <Image src={imageSrc} alt={`${item.name} — ${categoryLabel}, доставка в Петергофе и Ломоносове`} fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              priority={index < 2} />
+              priority={index < 6}
+              fetchPriority={index < 3 ? "high" : "auto"} />
           )}
           <div className="menu-dish-card__media-shade" aria-hidden />
           <div className="menu-dish-card__media-top" aria-hidden>
@@ -117,31 +118,33 @@ export function MenuDishCard({ item, index, categoryLabel = "мангал" }: {
                     {item.unit && <span className="label-caps text-ink/35">{item.unit}</span>}
                   </div>
                   <h3 id={`dish-${item.name}`} className="menu-dish-modal__title">{item.name}</h3>
-                  <div className="menu-dish-modal__copy">
-                    {(item.desc ?? item.shortDesc).split(/\n\n+/).map((paragraph) => (
-                      <p key={paragraph.slice(0, 24)} className="menu-dish-modal__desc">{paragraph}</p>
-                    ))}
-                    {item.highlights && item.highlights.length > 0 && (
-                      <ul className="menu-dish-modal__highlights">
-                        {item.highlights.map((point) => (
-                          <li key={point}>{point}</li>
-                        ))}
-                      </ul>
-                    )}
-                    {item.seoLine && (
-                      <p className="menu-dish-modal__seo">{item.seoLine}</p>
-                    )}
-                  </div>
-                  <div className="menu-dish-modal__bar">
-                    <div className="menu-dish-card__price">
-                      <span className="menu-dish-card__price-value text-[clamp(1.75rem,4vw,2.25rem)]">{item.price.toLocaleString("ru-RU")}</span>
-                      <span className="menu-dish-card__price-currency">₽</span>
+                  <div className="menu-dish-modal__scroll">
+                    <div className="menu-dish-modal__copy">
+                      {(item.desc ?? item.shortDesc).split(/\n\n+/).map((paragraph) => (
+                        <p key={paragraph.slice(0, 24)} className="menu-dish-modal__desc">{paragraph}</p>
+                      ))}
+                      {item.highlights && item.highlights.length > 0 && (
+                        <ul className="menu-dish-modal__highlights">
+                          {item.highlights.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {item.seoLine && (
+                        <p className="menu-dish-modal__seo">{item.seoLine}</p>
+                      )}
                     </div>
-                    <button type="button" onClick={handleAdd}
-                      className={`btn-primary menu-dish-modal__add ${added ? "!bg-wine" : ""}`}>
-                      {added ? <><CheckIcon /> Добавлено</> : <><PlusIcon /> Добавить в корзину</>}
-                    </button>
                   </div>
+                </div>
+                <div className="menu-dish-modal__bar">
+                  <div className="menu-dish-card__price">
+                    <span className="menu-dish-card__price-value text-[clamp(1.75rem,4vw,2.25rem)]">{item.price.toLocaleString("ru-RU")}</span>
+                    <span className="menu-dish-card__price-currency">₽</span>
+                  </div>
+                  <button type="button" onClick={handleAdd}
+                    className={`btn-primary menu-dish-modal__add ${added ? "!bg-wine" : ""}`}>
+                    {added ? <><CheckIcon /> Добавлено</> : <><PlusIcon /> Добавить в корзину</>}
+                  </button>
                 </div>
               </div>
             </motion.div>

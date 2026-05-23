@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
-import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
+import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/menu-counts";
 import { AmbientGrillVideo } from "@/components/ui/ambient-grill-video";
 
 export function AboutSection() {
@@ -25,9 +25,9 @@ export function AboutSection() {
           <div className="ornament-line ornament-line-light mb-5 max-w-[200px]">
             <span className="label-caps text-wine/50">О нас</span>
           </div>
-          <h2 className="display-section text-ink mb-8 leading-[0.98]">
+          <h1 className="display-section text-ink mb-8 leading-[0.98]">
             Вкус,<br />который<br /><span className="text-gold-shimmer">объединяет</span>
-          </h2>
+          </h1>
           <div className="space-y-5 text-ink/50 text-desc leading-relaxed">
             <p>Мы — команда, влюблённая в грузинскую кухню. Каждое блюдо — это история, рецепт, передаваемый из поколения в поколение.</p>
             <p>Шашлыки на мангале, люля-кебаб, каре ягнёнка, грузинские салаты и сеты — доставляем горячим по Петергофу, Ломоносову, Стрельне и Петродворцовому району.</p>

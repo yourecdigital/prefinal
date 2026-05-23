@@ -340,6 +340,39 @@
   cursor: default;
   position: relative;
 }
+
+.menu-card-grid,
+.menu-featured-grid {
+  align-items: stretch;
+}
+
+.menu-card-grid > *,
+.menu-featured-grid > * {
+  height: 100%;
+  min-height: 0;
+}
+
+.menu-card-light--grid {
+  min-height: 11.5rem;
+}
+
+.menu-card-light__desc {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.menu-card-light__footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.menu-card-light__footer .btn-add-light {
+  flex-shrink: 0;
+}
 .menu-card-light:hover {
   transform: translateY(-6px);
   border-color: rgba(200, 110, 66, 0.45);
@@ -380,6 +413,10 @@
   border: 1px solid rgba(164, 86, 50, 0.22);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
   transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.menu-dish-card--grid {
+  min-height: 0;
 }
 .menu-dish-card:hover {
   border-color: rgba(200, 110, 66, 0.42);
@@ -489,35 +526,43 @@
   padding: 1.15rem 1.25rem 1.35rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  flex: 1;
+  gap: 0.65rem;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 .menu-dish-card__teaser {
   font-family: var(--font-mono), "IBM Plex Mono", monospace;
   font-size: 0.78rem;
-  line-height: 1.65;
+  line-height: 1.55;
   letter-spacing: 0.02em;
   text-transform: none;
   color: rgba(237, 230, 226, 0.52);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .menu-dish-card__hook {
   font-family: var(--font-mono), "IBM Plex Mono", monospace;
   font-size: 0.68rem;
-  line-height: 1.5;
+  line-height: 1.45;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: rgba(212, 168, 83, 0.72);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 .menu-dish-card__footer {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 0.85rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  margin-top: auto;
+  flex-shrink: 0;
   padding-top: 0.85rem;
   border-top: 1px solid rgba(164, 86, 50, 0.15);
 }
@@ -540,8 +585,9 @@
 }
 .menu-dish-card__actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
+  width: 100%;
 }
 .menu-dish-card__ghost {
   font-family: var(--font-mono), "IBM Plex Mono", monospace;
@@ -566,13 +612,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  flex: 1 1 auto;
+  min-width: 0;
   font-family: var(--font-mono), "IBM Plex Mono", monospace;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #f4ebe7;
-  padding: 0.65rem 1.15rem;
+  padding: 0.7rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(164, 86, 50, 0.45);
   background: linear-gradient(135deg, #a45632 0%, #7a4020 100%);
@@ -656,9 +704,20 @@
   background: linear-gradient(180deg, transparent 50%, rgba(10, 8, 8, 0.95) 100%);
 }
 .menu-dish-modal__content {
-  padding: 1.35rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 1.35rem 1.5rem 0;
+  overflow: hidden;
+}
+
+.menu-dish-modal__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
-  flex: 1;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
 }
 .menu-dish-modal__title {
   font-family: var(--font-heading), "Unbounded", sans-serif;
@@ -708,13 +767,16 @@
   color: rgba(237, 230, 226, 0.28);
 }
 .menu-dish-modal__bar {
+  flex-shrink: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: 1rem;
+  padding: 1rem 1.5rem 1.35rem;
   border-top: 1px solid rgba(164, 86, 50, 0.18);
+  background: linear-gradient(180deg, rgba(14, 10, 10, 0.92) 0%, #0a0808 100%);
+  box-shadow: 0 -12px 28px rgba(0, 0, 0, 0.45);
 }
 .menu-dish-modal__add {
   flex: 1;
@@ -1260,6 +1322,103 @@
   }
 }
 
+.home-promo__gift-card.menu-card-light {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 20rem;
+  margin-inline: auto;
+  background: #0c0a08;
+  border-color: rgba(164, 86, 50, 0.35);
+}
+
+@media (min-width: 1024px) {
+  .home-promo__gift-card.menu-card-light {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+.home-promo__gift-card-media {
+  position: relative;
+  flex: 1 1 58%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.home-promo__gift-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* салат в центре, встроенную надпись внизу кадра уводим под панель */
+  object-position: center 28%;
+  pointer-events: none;
+}
+
+.home-promo__gift-card-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 10, 8, 0.2) 0%, transparent 38%),
+    linear-gradient(0deg, rgba(12, 10, 8, 0.92) 0%, rgba(12, 10, 8, 0.55) 42%, transparent 72%);
+  pointer-events: none;
+}
+
+.home-promo__gift-card-panel {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+  padding: 1.15rem 1.25rem 1.35rem;
+  background: linear-gradient(180deg, rgba(12, 10, 8, 0.72) 0%, rgba(12, 10, 8, 0.98) 28%);
+  border-top: 1px solid rgba(196, 154, 114, 0.22);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.55);
+}
+
+.home-promo__gift-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  color: #e8cca8;
+  background: rgba(92, 48, 24, 0.75);
+  border: 1px solid rgba(200, 110, 66, 0.5);
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.home-promo__gift-card-title {
+  margin: 0;
+  font-family: var(--font-heading), "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.15;
+  color: #f4ebe7;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+}
+
+.home-promo__gift-card-sub {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: rgba(237, 230, 226, 0.78);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+.home-promo__gift-card:hover {
+  border-color: rgba(200, 110, 66, 0.55);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(164, 86, 50, 0.15);
+}
+
 /* Two-column home sections — aligned left/right edges on desktop */
 .home-split {
   display: grid;
@@ -1321,6 +1480,96 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+/* «Откроем вам Грузию» — квадрат слева, текст по правому краю */
+.ornament-line--trail {
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 16rem;
+  margin-left: auto;
+}
+
+.ornament-line--trail::after {
+  display: none;
+}
+
+.ornament-line--trail::before {
+  flex: 1;
+  min-width: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .home-split--mirror {
+    grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .home-split--mirror .home-split__aside {
+    order: 0;
+    justify-self: start;
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .home-split--mirror .home-split__main {
+    order: 1;
+    justify-self: stretch;
+  }
+}
+
+.home-menu-teaser__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 36rem;
+  margin-left: auto;
+}
+
+.home-menu-teaser__media {
+  width: 100%;
+  max-width: 22rem;
+  margin-right: auto;
+}
+
+.home-menu-teaser__square {
+  width: 100%;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .home-split--mirror {
+    grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .home-menu-teaser__media {
+    max-width: none;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-split--mirror {
+    gap: 2rem;
+  }
+
+  .home-menu-teaser__media {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-menu-teaser__copy {
+    align-items: flex-end;
+    text-align: right;
+    max-width: none;
+  }
+
+  .ornament-line--trail {
+    max-width: 14rem;
   }
 }
 

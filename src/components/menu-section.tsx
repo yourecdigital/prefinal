@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
 import { MENU, MENU_SECTION_ID, type MenuCategory, type MenuItem, CONTACT } from "@/lib/georgian-menu";
 import { addToCart } from "@/lib/cart-store";
+import { scrollToMenuSection } from "@/lib/menu-scroll";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
 import { MenuDishCard } from "@/components/menu-dish-card";
 import { PlusIcon, CheckIcon, PhoneIcon, VkIcon } from "@/components/ui/icons";
@@ -23,9 +24,9 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-      className="menu-card-light flex flex-col"
+      className="menu-card-light menu-card-light--grid flex flex-col h-full"
     >
-      <div className="flex items-center justify-between mb-1">
+      <div className="menu-card-light__head flex items-center justify-between mb-1">
         {item.badge ? (
           <span className={`badge ${item.badge === "хит" ? "badge-hit" : "badge-gold"}`}>{item.badge}</span>
         ) : (
@@ -35,15 +36,15 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
       </div>
 
       <p
-        className="text-ink font-bold mt-2 leading-snug"
+        className="menu-card-light__title text-ink font-bold mt-2 leading-snug"
         style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.05rem,1.8vw,1.3rem)" }}
       >
         {item.name}
       </p>
 
-      <p className="mt-2 text-ink/45 text-[13px] leading-relaxed text-desc flex-1">{item.shortDesc}</p>
+      <p className="menu-card-light__desc mt-2 text-ink/45 text-[13px] leading-relaxed text-desc">{item.shortDesc}</p>
 
-      <div className="mt-4 pt-3 border-t border-wine/10 flex items-center justify-between">
+      <div className="menu-card-light__footer mt-4 pt-3 border-t border-wine/10 flex items-center justify-between gap-3">
         <div className="flex items-baseline gap-1">
           <span
             className="font-bold text-wine"
@@ -96,7 +97,7 @@ function CategoryGrid({ category }: { category: MenuCategory }) {
         )}
 
         {regular.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="menu-card-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {regular.map((item, i) => (
               <MenuCard key={item.name} item={item} index={i + featured.length} />
             ))}
@@ -111,16 +112,14 @@ export function MenuSection() {
   const [activeId, setActiveId] = useState(MENU[0].id);
   const ref = useRef<HTMLElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
-  const categoryHeadRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const active = MENU.find((c) => c.id === activeId) ?? MENU[0];
 
   const handleTabClick = (id: string) => {
     setActiveId(id);
-    requestAnimationFrame(() => {
-      categoryHeadRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    window.history.replaceState(null, "", `#${MENU_SECTION_ID}`);
+    requestAnimationFrame(() => scrollToMenuSection("smooth"));
   };
 
   return (
@@ -139,10 +138,10 @@ export function MenuSection() {
           <div className="ornament-line ornament-line-light mb-4 max-w-xs">
             <span className="label-caps text-wine/60">Меню</span>
           </div>
-          <h2 className="display-section text-ink leading-tight">
+          <h1 className="display-section text-ink leading-tight">
             Попробуй<br />
             <span className="text-wine">Грузию</span> на вкус
-          </h2>
+          </h1>
         </motion.div>
 
         <div ref={tabsRef} className="menu-tabs-sticky">
@@ -186,7 +185,6 @@ export function MenuSection() {
         </div>
 
         <motion.div
-          ref={categoryHeadRef}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.25 }}

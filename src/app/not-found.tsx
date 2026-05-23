@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { MenuLink } from "@/components/menu-link";
+import { notFoundSeoMetadata } from "@/lib/page-seo";
 
-export const metadata: Metadata = {
-  title: "404 — Страница не найдена",
-};
+export const metadata = notFoundSeoMetadata();
 
 export default function NotFound() {
   return (

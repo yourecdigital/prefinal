@@ -1,13 +1,16 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import { DeliveryCards } from "@/components/delivery-cards";
-import { SEO_FAQ, SITE_URL } from "@/lib/seo";
+import { SeoFaqJsonLd } from "@/components/seo-json-ld";
+import { SEO_FAQ } from "@/lib/seo";
+import { SEO_LANDINGS, seoLandingPath } from "@/lib/seo-landings";
+import { pageSeoMetadata } from "@/lib/page-seo";
 
-export const metadata: Metadata = {
+export const metadata = pageSeoMetadata({
   title: "Доставка шашлыка и мангала в Петергоф, Ломоносов, Стрельну",
   description:
     "Доставка шашлыка на мангале, люля-кебаба и грузинских блюд по Петергофу, Ломоносову, Стрельне и Петродворцовому району за 30–45 минут. Зоны и минимальная сумма заказа.",
-  alternates: { canonical: `${SITE_URL}/delivery/` },
-};
+  pathname: "/delivery/",
+});
 
 const ZONES: { num: number; min: number; areas: string[] }[] = [
   { num: 1, min: 1000, areas: ["Петергоф"] },
@@ -22,6 +25,7 @@ const ZONES: { num: number; min: number; areas: string[] }[] = [
 export default function DeliveryPage() {
   return (
     <main className="page-top">
+      <SeoFaqJsonLd />
       <section className="bg-hero py-24 sm:py-32 px-6 sm:px-10">
         <div className="max-w-5xl mx-auto">
           <div className="mb-16">
@@ -75,6 +79,21 @@ export default function DeliveryPage() {
               ))}
             </ol>
           </div>
+
+          <nav className="menu-card-light p-8 sm:p-10 mb-16" aria-label="Популярные запросы доставки">
+            <h2 className="text-ink font-bold text-2xl mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+              Популярные <span className="text-wine">запросы</span>
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {SEO_LANDINGS.map((l) => (
+                <li key={l.slug}>
+                  <Link href={seoLandingPath(l.slug)} className="text-wine hover:text-wine/80 text-desc transition-colors">
+                    {l.h1} {l.h1Accent ?? ""}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <div className="menu-card-light p-8 sm:p-10">
             <h2 className="text-ink font-bold text-2xl mb-6" style={{ fontFamily: "var(--font-heading)" }}>Частые вопросы</h2>

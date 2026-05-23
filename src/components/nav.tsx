@@ -16,9 +16,9 @@ function navLinkActive(pathname: string, href: string) {
 
 const LINKS = [
   { label: "Меню", href: MENU_HREF },
-  { label: "О нас", href: "/about" },
-  { label: "Доставка", href: "/delivery" },
-  { label: "Контакты", href: "/contacts" },
+  { label: "О нас", href: "/about/" },
+  { label: "Доставка", href: "/delivery/" },
+  { label: "Контакты", href: "/contacts/" },
 ];
 
 function MobileMenuTrigger({ open, onToggle, controlsId }: {

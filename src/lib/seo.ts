@@ -1,5 +1,15 @@
-/** Базовый URL продакшена (GitHub Pages) */
-export const SITE_URL = "https://yourecdigital.github.io/prefinal";
+import { MENU, PROMO } from "@/lib/georgian-menu";
+import { SITE_URL } from "@/lib/site-url";
+
+export { SITE_URL };
+
+/** Google Search Console (meta name=google-site-verification) */
+export const GOOGLE_SITE_VERIFICATION =
+  process.env.GOOGLE_SITE_VERIFICATION ??
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  "QlR5Bete6FsSGe1O0yybSXkX_04NPweRRxRMb7oX5Xs";
+
+const MENU_ITEMS_TOTAL = MENU.reduce((sum, cat) => sum + cat.items.length, 0);
 
 export const SEO_AREAS = [
   "Петергоф",
@@ -93,7 +103,6 @@ const DRINKS = [
   "манговый сок",
   "томатный сок",
   "чай с доставкой",
-  "гаспачо",
   "грузинские напитки",
   "напитки к шашлыку",
   "освежающие напитки доставка",
@@ -155,9 +164,8 @@ export const SEO_DEFAULT = {
   title:
     "Доставка грузинской кухни и мангала в Петергофе — «Вкусно как в Грузии» | Шашлык, хачапури, напитки",
   description:
-    "Доставка шашлыка на мангале, хачапури, люля-кебаба, гренок, сулугуни, лимонадов, морса, гранатового сока и грузинских салатов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе. 69 позиций, готовим на углях. Заказ: +7 (909) 577-75-80. Доставка 30–45 мин.",
-  ogDescription:
-    "Шашлыки на мангале, хачапури, люля, гренки, лимонад, морс, гранатовый сок и грузинские салаты — доставляем по Петергофу, Ломоносову и Стрельне за 30–45 минут",
+    `Доставка шашлыка на мангале, хачапури, люля-кебаба, гренок, сулугуни, лимонадов, морса, гранатового сока и грузинских салатов в Петергофе, Ломоносове, Стрельне и Петродворцовом районе. ${MENU_ITEMS_TOTAL} позиций, готовим на углях. Заказ: +7 (909) 577-75-80. Доставка 30–45 мин.`,
+  ogDescription: `${PROMO.title} ${PROMO.condition} — ${PROMO.gift} Шашлыки на мангале, хачапури, гренки и грузинские салаты — доставка по Петергофу, Ломоносову и Стрельне за 30–45 минут`,
 } as const;
 
 export const SEO_FAQ = [
@@ -202,11 +210,3 @@ export const SEO_FAQ = [
       "Выберите блюда в меню на сайте, добавьте в корзину и оформите заказ с телефоном и адресом. Также можно позвонить по номеру +7 (909) 577-75-80.",
   },
 ] as const;
-
-export function pageMetadata(title: string, description: string) {
-  return {
-    title,
-    description,
-    alternates: { canonical: `${SITE_URL}/` },
-  };
-}

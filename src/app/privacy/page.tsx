@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalDocument, LegalList, LegalSection } from "@/components/legal-document";
 import { LEGAL } from "@/lib/legal";
+import { pageSeoMetadata } from "@/lib/page-seo";
 
-export const metadata: Metadata = {
+export const metadata = pageSeoMetadata({
   title: "Политика конфиденциальности",
   description: `Политика обработки персональных данных сервиса доставки «${LEGAL.siteName}». Соответствует требованиям 152-ФЗ.`,
-};
+  pathname: "/privacy/",
+});
 
 const op = LEGAL.operator;
 

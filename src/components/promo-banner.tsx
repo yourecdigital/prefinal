@@ -6,6 +6,13 @@ import { PROMO, CONTACT } from "@/lib/georgian-menu";
 import { TelegramEmoji } from "@/components/ui/telegram-emoji";
 import { PhoneIcon, CalendarIcon } from "@/components/ui/icons";
 
+const basePath =
+  typeof process !== "undefined" && process.env.NEXT_PUBLIC_BASE_PATH
+    ? process.env.NEXT_PUBLIC_BASE_PATH
+    : "";
+
+const MANGAL_SALAT_IMG = `${basePath}/menu/mangal/mangal-salat.webp`;
+
 export function PromoBanner() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -59,14 +66,32 @@ export function PromoBanner() {
         <motion.div initial={{ opacity: 0, x: 40 }} animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="home-split__aside">
-          <div className="menu-card-light rounded-2xl p-8 flex flex-col items-center text-center gap-5">
-            <div className="text-5xl spin-slow opacity-40 text-gold select-none" style={{ fontFamily: "var(--font-heading)" }}>✦</div>
-            <p className="label-caps text-wine/60">Абсолютно бесплатно</p>
-            <TelegramEmoji name="gift" size={56} />
-            <p className="text-ink font-bold leading-snug" style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.2rem,2.5vw,1.6rem)" }}>
-              {PROMO.gift.replace(" — ПОДАРОК!", "")}
-            </p>
-            <p className="text-ink/35 text-sm text-desc">Успей порадовать себя!</p>
+          <div className="home-promo__gift-card menu-card-light rounded-2xl overflow-hidden">
+            <div className="home-promo__gift-card-media" aria-hidden>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={MANGAL_SALAT_IMG}
+                alt=""
+                className="home-promo__gift-card-bg"
+                width={400}
+                height={400}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                draggable={false}
+              />
+              <div className="home-promo__gift-card-vignette" />
+            </div>
+            <div className="home-promo__gift-card-panel">
+              <span className="home-promo__gift-card-badge label-caps">
+                <TelegramEmoji name="gift" size={18} />
+                Абсолютно бесплатно
+              </span>
+              <p className="home-promo__gift-card-title">
+                {PROMO.gift.replace(" — ПОДАРОК!", "")}
+              </p>
+              <p className="home-promo__gift-card-sub text-desc">Успей порадовать себя!</p>
+            </div>
           </div>
         </motion.div>
       </div>

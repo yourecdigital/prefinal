@@ -2,19 +2,6 @@ import { CONTACT, MENU, SITE } from "@/lib/georgian-menu";
 import { SEO_FAQ, SITE_URL } from "@/lib/seo";
 
 export function SeoJsonLd() {
-  const faq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: SEO_FAQ.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
   const restaurant = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -72,6 +59,29 @@ export function SeoJsonLd() {
     },
   };
 
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: SITE.name,
+    url: `${SITE_URL}/`,
+    description: SITE.description,
+    inLanguage: "ru-RU",
+    publisher: { "@id": `${SITE_URL}/#restaurant` },
+    potentialAction: {
+      "@type": "OrderAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/menu/`,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      deliveryMethod: "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
+    },
+  };
+
   const deliveryService = {
     "@context": "https://schema.org",
     "@type": "FoodDeliveryService",
@@ -86,8 +96,27 @@ export function SeoJsonLd() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurant) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(deliveryService) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
     </>
+  );
+}
+
+export function SeoFaqJsonLd() {
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: SEO_FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
   );
 }

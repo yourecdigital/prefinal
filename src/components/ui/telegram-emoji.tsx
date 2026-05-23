@@ -22,7 +22,7 @@ export function TelegramEmoji({ name, size = 32, className, label }: TelegramEmo
       width={size}
       height={size}
       className={`inline-block shrink-0 object-contain${className ? ` ${className}` : ""}`}
-      loading={size >= 40 ? "eager" : "lazy"}
+      loading="eager"
       decoding="async"
       draggable={false}
     />

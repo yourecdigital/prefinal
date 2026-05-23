@@ -13,8 +13,24 @@ const root = path.join(__dirname, "..");
 const outDir = path.join(root, "out");
 const publicDir = path.join(root, "public");
 
-/** Обязательные URL-пути — должны существовать в public/ и out/ после экспорта */
-const REQUIRED_IN_OUT = [
+/** SEO-лендинги /zakaz/{slug}/ */
+const SEO_SLUGS = [
+  "shashlyk-petergof",
+  "shashlyk-lomonosov",
+  "shashlyk-strelna",
+  "khachapuri-dostavka",
+  "lyulya-kebab-dostavka",
+  "gruzinskaya-kuhnya-petergof",
+  "grenki-dostavka",
+  "mangal-na-dom",
+];
+
+/** Медиа из public/ — должны быть и в public/, и в out/ */
+const REQUIRED_MEDIA = [
+  "favicon.ico",
+  "favicon-32x32.png",
+  "apple-touch-icon.png",
+  "icon-512.png",
   "og-image.png",
   "mountains/caucasus-far.png",
   "mountains/caucasus-mid.png",
@@ -23,6 +39,17 @@ const REQUIRED_IN_OUT = [
   "menu/mangal/myakot-baraniny.webp",
   "videos/grill-shashlik.mp4",
   "videos/grill-shashlik-poster.jpg",
+];
+
+/** Страницы, которые генерирует next build (только out/) */
+const SHORT_URLS = ["petergof", "lomonosov", "strelna"];
+
+const REQUIRED_PAGES_IN_OUT = [
+  "404.html",
+  ...SHORT_URLS.map((p) => `${p}/index.html`),
+  ...SEO_SLUGS.map((slug) => `zakaz/${slug}/index.html`),
+  "nginx-static.conf",
+  "nginx-gvkusno.conf",
 ];
 
 function exists(p) {
@@ -47,11 +74,23 @@ if (!exists(outDir)) {
 const missingOut = [];
 const missingPublic = [];
 
-for (const rel of REQUIRED_IN_OUT) {
+for (const rel of REQUIRED_MEDIA) {
   const o = path.join(outDir, rel);
   const p = path.join(publicDir, rel);
   if (!exists(o)) missingOut.push(rel);
   if (!exists(p)) missingPublic.push(rel);
+}
+
+for (const rel of REQUIRED_PAGES_IN_OUT) {
+  if (!exists(path.join(outDir, rel))) missingOut.push(rel);
+}
+
+for (const slug of SEO_SLUGS) {
+  const flat = path.join(outDir, `zakaz/${slug}/__next.zakaz.$d$slug.__PAGE__.txt`);
+  const nested = path.join(outDir, "zakaz", slug, "__next.zakaz", "$d$slug", "__PAGE__.txt");
+  if (!exists(flat) && !exists(nested)) {
+    missingOut.push(`zakaz/${slug}/ (RSC __PAGE__.txt)`);
+  }
 }
 
 if (missingPublic.length) {

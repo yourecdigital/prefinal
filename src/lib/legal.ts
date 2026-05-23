@@ -23,7 +23,7 @@ export const LEGAL = {
     /** Юридический адрес — ЗАМЕНИТЬ */
     legalAddress: "198516, г. Санкт-Петербург, г. Петергоф, ул. Примерная, д. 1",
     /** E-mail для обращений по ПДн и претензиям — ЗАМЕНИТЬ */
-    email: "info@vkusno-georgia.example",
+    email: "info@gvkusno.ru",
     phone: CONTACT.phone,
     phoneRaw: CONTACT.phoneRaw,
   },

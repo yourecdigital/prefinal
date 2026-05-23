@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { CONTACT, MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/georgian-menu";
+import { CONTACT } from "@/lib/georgian-menu";
+import { MENU_CATEGORY_COUNT, MENU_ITEM_COUNT } from "@/lib/menu-counts";
 import { MenuLink } from "@/components/menu-link";
 import { TypewriterText } from "@/components/ui/typewriter-text";
 import { CaucasusMountains } from "@/components/ui/caucasus-mountains";

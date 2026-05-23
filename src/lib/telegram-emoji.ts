@@ -1,7 +1,8 @@
 /**
- * Animated emojis (WebP / GIF).
+ * Animated emojis (WebP).
  * Telegram-набор: `npm run telegram-emojis`
- * grenki — отдельная GIF (ломтик тоста с маслом)
+ * grenki — анимированная буханка хлеба 🍞 (Noto, для «Горячих закусок»)
+ * sauce — соусница 🫗 (Noto; в Anik — стакан, не соусница)
  */
 export const TELEGRAM_EMOJI_IDS = [
   "fire", "herb", "rocket", "heart", "party", "gift",
@@ -15,11 +16,6 @@ export const TELEGRAM_EMOJI_IDS = [
 
 export type TelegramEmojiId = (typeof TELEGRAM_EMOJI_IDS)[number];
 
-const EMOJI_EXT: Partial<Record<TelegramEmojiId, "gif" | "webp">> = {
-  grenki: "gif",
-};
-
 export function telegramEmojiSrc(id: TelegramEmojiId, basePath = ""): string {
-  const ext = EMOJI_EXT[id] ?? "webp";
-  return `${basePath.replace(/\/$/, "")}/telegram-emojis/${id}.${ext}`;
+  return `${basePath.replace(/\/$/, "")}/telegram-emojis/${id}.webp`;
 }

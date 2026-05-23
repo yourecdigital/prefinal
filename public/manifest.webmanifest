@@ -1,0 +1,24 @@
+{
+  "name": "Вкусно как в Грузии — доставка в Петергофе",
+  "short_name": "Вкусно как в Грузии",
+  "description": "Доставка шашлыка, хачапури и грузинской кухни в Петергоф, Ломоносов и Стрельну",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080608",
+  "theme_color": "#080608",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

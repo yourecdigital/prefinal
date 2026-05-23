@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { AboutSection } from "@/components/about-section";
 import { GeorgianQuote } from "@/components/georgian-quote";
-import { SITE_URL } from "@/lib/seo";
+import { MENU_ITEM_COUNT } from "@/lib/menu-counts";
+import { pageSeoMetadata } from "@/lib/page-seo";
 
-export const metadata: Metadata = {
+export const metadata = pageSeoMetadata({
   title: "О нас — шашлык и мангал с доставкой в Петергофе",
   description:
-    "«Вкусно как в Грузии» — доставка шашлыка на мангале, хачапури, горячих закусок, напитков и грузинских блюд в Петергоф, Ломоносов, Стрельну и Петродворцовый район. 69 позиций, готовим на углях.",
-  alternates: { canonical: `${SITE_URL}/about/` },
-};
+    `«Вкусно как в Грузии» — доставка шашлыка на мангале, хачапури, горячих закусок, напитков и грузинских блюд в Петергоф, Ломоносов, Стрельну и Петродворцовый район. ${MENU_ITEM_COUNT} позиций, готовим на углях.`,
+  pathname: "/about/",
+});
 
 export default function AboutPage() {
   return (
